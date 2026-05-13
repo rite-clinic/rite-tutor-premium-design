@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ContactCTA } from '@/contexts/ContactModalContext';
 import logo from '@/assets/logo.png';
 
 const navigation = [
@@ -13,7 +13,7 @@ const navigation = [
   { name: 'Services', href: '/services' },
   { name: 'Projects', href: '/projects' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Blog', href: '/blogs' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -105,9 +105,10 @@ export function Header() {
 
             {/* CTA Button */}
             <div className="hidden md:flex items-center gap-4">
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">Book Free Strategy Call</Link>
-              </Button>
+              <a href="tel:+19294218055" className="hidden lg:flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+                <Phone className="w-4 h-4" /> +1 (929) 421-8055
+              </a>
+              <ContactCTA variant="hero" size="lg">Book Free Strategy Call</ContactCTA>
             </div>
 
             {/* Mobile menu button */}
@@ -148,10 +149,11 @@ export function Header() {
                     {item.name}
                   </Link>
                 ))}
-                <div className="pt-4">
-                  <Button variant="hero" size="lg" className="w-full" asChild>
-                    <Link to="/contact">Book Free Strategy Call</Link>
-                  </Button>
+                <div className="pt-4 space-y-2">
+                  <ContactCTA variant="hero" size="lg" className="w-full">Book Free Strategy Call</ContactCTA>
+                  <a href="tel:+19294218055" className="flex items-center justify-center gap-2 text-sm font-medium text-foreground/80 hover:text-primary py-2">
+                    <Phone className="w-4 h-4" /> +1 (929) 421-8055
+                  </a>
                 </div>
               </div>
             </motion.div>

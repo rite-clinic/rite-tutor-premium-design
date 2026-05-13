@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
@@ -225,9 +226,7 @@ const Pricing = () => {
                       ))}
                     </ul>
                     <p className="text-xs text-muted-foreground italic mb-6">Best for: {tier.bestFor}</p>
-                    <Button variant={tier.popular ? "hero" : "hero-outline"} className="w-full" asChild>
-                      <Link to="/contact">Book Strategy Call</Link>
-                    </Button>
+                    <ContactCTA variant={tier.popular ? "hero" : "hero-outline"} className="w-full">Book Strategy Call</ContactCTA>
                   </div>
                 </motion.div>
               ))}
@@ -323,12 +322,10 @@ const Pricing = () => {
               <p className="text-lg text-primary-foreground/80 mb-8">
                 Families don't invest in Rite Tutor because it's cheap. They invest because it delivers outcomes that matter: children who think logically, students who compete for scholarships, and young people who enter adulthood with marketable skills and genuine confidence.
               </p>
-              <Button variant="premium" size="xl" asChild>
-                <Link to="/contact" className="group">
+              <ContactCTA variant="premium" size="xl" className="group">
                   Book Your Strategy Call Today
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+                </ContactCTA>
             </motion.div>
           </div>
         </section>

@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
@@ -232,12 +233,10 @@ const Projects = () => {
               <p className="text-lg text-primary-foreground/80 mb-8">
                 The question isn't whether your child can build impressive projects—it's whether you're ready to invest in education that produces evidence of excellence rather than empty certificates of completion.
               </p>
-              <Button variant="premium" size="xl" asChild>
-                <Link to="/contact" className="group">
+              <ContactCTA variant="premium" size="xl" className="group">
                   Book Your Free Strategy Call
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+                </ContactCTA>
             </motion.div>
           </div>
         </section>

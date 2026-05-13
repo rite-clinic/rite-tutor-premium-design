@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
@@ -97,12 +98,10 @@ const HowItWorks = () => {
                   </p>
                 </div>
                 <div className="mt-6">
-                  <Button variant="hero" size="lg" asChild>
-                    <Link to="/contact" className="group">
+                  <ContactCTA variant="hero" size="lg" className="group">
                       Take the Free Logic Assessment
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
+                    </ContactCTA>
                 </div>
               </motion.div>
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -297,12 +296,10 @@ const HowItWorks = () => {
               <p className="text-lg text-primary-foreground/80 mb-8">
                 The first step is conversation, not commitment. No pressure. No sales scripts. Just honest dialogue about transforming your child's potential into excellence.
               </p>
-              <Button variant="premium" size="xl" asChild>
-                <Link to="/contact" className="group">
+              <ContactCTA variant="premium" size="xl" className="group">
                   Get Started Now
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+                </ContactCTA>
             </motion.div>
           </div>
         </section>

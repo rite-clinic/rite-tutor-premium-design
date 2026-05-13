@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
@@ -269,12 +270,10 @@ const LearningPathways = () => {
               <p className="text-lg text-primary-foreground/80 mb-8">
                 During your free strategy call, we'll assess your child's current capabilities, recommend the appropriate starting pathway, and map a realistic progression timeline. No pressure. No hard sell. Just honest conversation about your child's future.
               </p>
-              <Button variant="premium" size="xl" asChild>
-                <Link to="/contact" className="group">
+              <ContactCTA variant="premium" size="xl" className="group">
                   Book Your Free Strategy Call
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+                </ContactCTA>
             </motion.div>
           </div>
         </section>
