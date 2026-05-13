@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
@@ -128,12 +129,10 @@ const WhyRiteTutor = () => {
                 <p className="text-lg text-muted-foreground">
                   Every session is tailored to your child's learning style, pace, and interests. We meet them where they are and take them where they need to go.
                 </p>
-                <Button variant="hero" size="lg" asChild>
-                  <Link to="/contact" className="group">
+                <ContactCTA variant="hero" size="lg" className="group">
                     Experience the Difference
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
+                  </ContactCTA>
               </motion.div>
             </div>
           </div>
@@ -154,12 +153,10 @@ const WhyRiteTutor = () => {
               <p className="text-lg text-primary-foreground/80 mb-8">
                 Book a complimentary strategy session and discover how we can transform your child's future.
               </p>
-              <Button variant="premium" size="xl" asChild>
-                <Link to="/contact" className="group">
+              <ContactCTA variant="premium" size="xl" className="group">
                   Book Your Free Strategy Call
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+                </ContactCTA>
             </motion.div>
           </div>
         </section>

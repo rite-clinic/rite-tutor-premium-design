@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { ContactCTA } from '@/contexts/ContactModalContext';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle, Users, Brain, Lightbulb, Target, ChevronRight, BookOpen, Github, Award, BarChart3, Globe, Star, Phone, Quote } from 'lucide-react';
@@ -58,12 +59,10 @@ export function HeroSection() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button variant="hero" size="xl" asChild>
-                <Link to="/contact" className="group">
+              <ContactCTA variant="hero" size="xl" className="group">
                   Book Your Free Strategy Call
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+                </ContactCTA>
               <Button variant="hero-outline" size="xl" asChild>
                 <Link to="/how-it-works">
                   See How It Works
@@ -684,12 +683,10 @@ export function CTASection() {
           <p className="text-lg text-primary-foreground/80 mb-8">
             Whether you're anywhere in the United States or internationally, the path to world-class education starts with conversation.
           </p>
-          <Button variant="premium" size="xl" asChild>
-            <Link to="/contact" className="group">
+          <ContactCTA variant="premium" size="xl" className="group">
               Book Your Free Strategy Call Now
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
+            </ContactCTA>
         </motion.div>
       </div>
     </section>
