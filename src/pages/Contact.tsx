@@ -2,11 +2,8 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, CheckCircle, AlertCircle } from "lucide-react";
-import axios from "axios";
-import { useMemo, useState } from "react";
+import { ContactForm } from "@/components/ContactForm";
+import { Mail, MapPin, Phone, CheckCircle } from "lucide-react";
 
 const contactSchema = {
   "@context": "https://schema.org",
