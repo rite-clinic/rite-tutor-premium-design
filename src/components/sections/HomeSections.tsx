@@ -24,7 +24,7 @@ const staggerContainer = {
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-card">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
       
       <div className="container-wide py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
