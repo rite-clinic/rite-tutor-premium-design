@@ -53,7 +53,7 @@ const WhyRiteTutor = () => {
       <Layout>
         {/* Hero Section */}
         <section className="relative bg-card py-20">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
           <div className="container-wide">
             <motion.div 
               className="max-w-3xl mx-auto text-center"

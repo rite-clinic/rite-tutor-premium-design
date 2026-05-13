@@ -102,7 +102,7 @@ const LearningPathways = () => {
       <Layout>
         {/* Hero */}
         <section className="relative bg-card py-20">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
           <div className="container-wide">
             <motion.div className="max-w-4xl mx-auto text-center" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
