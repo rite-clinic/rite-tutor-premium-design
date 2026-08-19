@@ -4,6 +4,7 @@ import logo from '@/assets/logo.png';
 
 const footerLinks = {
   programs: [
+    { name: 'Courses', href: '/courses' },
     { name: 'Learning Pathways', href: '/learning-pathways' },
     { name: 'Services', href: '/services' },
     { name: 'Projects & Impact', href: '/projects' },

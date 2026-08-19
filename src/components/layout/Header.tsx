@@ -10,6 +10,7 @@ const navigation = [
   { name: 'About Us', href: '/about-us' },
   { name: 'How It Works', href: '/how-it-works' },
   { name: 'Learning Pathways', href: '/learning-pathways' },
+  { name: 'Courses', href: '/courses' },
   { name: 'Services', href: '/services' },
   { name: 'Projects', href: '/projects' },
   { name: 'Pricing', href: '/pricing' },

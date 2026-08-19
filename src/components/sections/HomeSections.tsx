@@ -64,6 +64,11 @@ export function HeroSection() {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </ContactCTA>
               <Button variant="hero-outline" size="xl" asChild>
+                <Link to="/courses">
+                  Explore Our Courses
+                </Link>
+              </Button>
+              <Button variant="outline" size="xl" asChild>
                 <Link to="/how-it-works">
                   See How It Works
                 </Link>
@@ -683,10 +688,15 @@ export function CTASection() {
           <p className="text-lg text-primary-foreground/80 mb-8">
             Whether you're anywhere in the United States or internationally, the path to world-class education starts with conversation.
           </p>
-          <ContactCTA variant="premium" size="xl" className="group">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <ContactCTA variant="premium" size="xl" className="group">
               Book Your Free Strategy Call Now
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </ContactCTA>
+            <Button variant="hero-outline" size="xl" asChild>
+              <Link to="/courses">Explore Our Courses</Link>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

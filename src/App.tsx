@@ -13,6 +13,8 @@ import AboutUs from "./pages/AboutUs";
 import HowItWorks from "./pages/HowItWorks";
 import LearningPathways from "./pages/LearningPathways";
 import Projects from "./pages/Projects";
+import Courses from "./pages/Courses";
+import CourseDetails from "./pages/CourseDetails";
 import Pricing from "./pages/Pricing";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
@@ -45,6 +47,8 @@ const App = () => (
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
               <Route path="/learning-pathways" element={<LearningPathways />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/:courseId" element={<CourseDetails />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/services" element={<Services />} />
