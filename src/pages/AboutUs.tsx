@@ -280,10 +280,15 @@ const AboutUs = () => {
               <p className="text-lg text-primary-foreground/80 mb-8">
                 We don't believe in hard-sell tactics or manufactured urgency. If Rite Tutor is right for your family, that will become clear through honest conversation. Whether you're anywhere in the United States or internationally, the path to world-class education starts with conversation.
               </p>
-              <ContactCTA variant="premium" size="xl" className="group">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <ContactCTA variant="premium" size="xl" className="group">
                   Book Your Free Strategy Call
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </ContactCTA>
+                <Button variant="hero-outline" size="xl" asChild>
+                  <Link to="/courses">Explore Our Courses</Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>

@@ -270,10 +270,15 @@ const LearningPathways = () => {
               <p className="text-lg text-primary-foreground/80 mb-8">
                 During your free strategy call, we'll assess your child's current capabilities, recommend the appropriate starting pathway, and map a realistic progression timeline. No pressure. No hard sell. Just honest conversation about your child's future.
               </p>
-              <ContactCTA variant="premium" size="xl" className="group">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <ContactCTA variant="premium" size="xl" className="group">
                   Book Your Free Strategy Call
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </ContactCTA>
+                <Button variant="hero-outline" size="xl" asChild>
+                  <Link to="/courses">Explore Our Courses</Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>
