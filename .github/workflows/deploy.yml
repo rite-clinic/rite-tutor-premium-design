@@ -1,4 +1,4 @@
-name: Deploy to Hostinger
+name: Deploy to EC2
 
 on:
   push:
@@ -11,12 +11,13 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: npm
 
       - name: Install Dependencies
         run: npm install
@@ -24,12 +25,28 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_PATH }}
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/ec2_key
+          chmod 600 ~/.ssh/ec2_key
+          ssh-keyscan -H "${{ secrets.EC2_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Upload Build
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/ec2_key" \
+            ./dist/ \
+            ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/tmp/rite-tutor-dist/
+
+      - name: Deploy to Apache
+        run: |
+          ssh -i ~/.ssh/ec2_key \
+            ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
+            "sudo rsync -av --delete /tmp/rite-tutor-dist/ /var/www/html/rite-tutor-premium-design/dist/"
+
+      - name: Fix Permissions
+        run: |
+          ssh -i ~/.ssh/ec2_key \
+            ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
+            "sudo chown -R www-data:www-data /var/www/html/rite-tutor-premium-design/dist"
