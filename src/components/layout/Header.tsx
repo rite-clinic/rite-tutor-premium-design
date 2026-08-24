@@ -7,7 +7,7 @@ import logo from '@/assets/logo.png';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'About Us', href: '/about-us' },
+  { name: 'About', href: '/about-us' },
   { name: 'How It Works', href: '/how-it-works' },
   { name: 'Learning Pathways', href: '/learning-pathways' },
   { name: 'Courses', href: '/courses' },
