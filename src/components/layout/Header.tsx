@@ -109,12 +109,12 @@ export function Header() {
               <a href="tel:+19294218055" className="hidden lg:flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
                 <Phone className="w-4 h-4" /> +1 (929) 421-8055
               </a>
-              <Link
-                to="/sign-in"
-                className="inline-flex h-12 items-center justify-center rounded-lg bg-foreground px-6 text-base font-semibold text-background shadow-premium transition-all duration-300 hover:bg-foreground/90 hover:shadow-premium-lg"
-              >
-                Login
-              </Link>
+              <a
+  href="https://ritetutor.com/sign-in"
+  className="inline-flex h-12 items-center justify-center rounded-lg bg-foreground px-6 text-base font-semibold text-background shadow-premium transition-all duration-300 hover:bg-foreground/90 hover:shadow-premium-lg"
+>
+  Login
+</a>
               <ContactCTA variant="hero" size="lg">Book Free Strategy Call</ContactCTA>
             </div>
 
