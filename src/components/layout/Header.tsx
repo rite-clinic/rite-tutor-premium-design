@@ -8,12 +8,12 @@ import logo from '@/assets/logo.png';
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about-us' },
-  { name: 'How It Works', href: '/how-it-works' },
-  { name: 'Learning Pathways', href: '/learning-pathways' },
   { name: 'Courses', href: '/courses' },
   { name: 'Services', href: '/services' },
   { name: 'Projects', href: '/projects' },
   { name: 'Pricing', href: '/pricing' },
+  { name: 'Learning Pathways', href: '/learning-pathways' },
+  { name: 'How It Works', href: '/how-it-works' },
   { name: 'Blog', href: '/blogs' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -73,7 +73,7 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <div className="hidden xl:flex items-center gap-1">
-              {navigation.slice(0, 7).map((item) => (
+              {navigation.slice(0, 6).map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
