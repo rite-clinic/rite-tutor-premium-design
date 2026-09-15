@@ -1,3 +1,10 @@
+import { septemberBlogPosts } from "./septemberBlogPosts";
+
+export type BlogContentBlock =
+  | string
+  | { type: "image"; src: string; alt: string }
+  | { type: "list"; items: string[]; ordered?: boolean };
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -7,7 +14,8 @@ export interface BlogPost {
   readTime: string;
   image: string;
   imageAlt: string;
-  content: string[]; // markdown-lite: ## headers, **bold**, plain paragraphs
+  download?: { title: string; description: string; href: string };
+  content: BlogContentBlock[]; // Headings, inline emphasis/links, paragraphs, images, and lists.
 }
 
 // High-quality Unsplash images (free to use, hot-linkable via images.unsplash.com)
@@ -307,6 +315,8 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+blogPosts.push(...septemberBlogPosts);
 
 export const getRelatedPosts = (currentSlug: string, limit = 3): BlogPost[] => {
   const current = blogPosts.find((p) => p.slug === currentSlug);

@@ -29,7 +29,7 @@ const Blog = () => {
               "@type": "BlogPosting",
               headline: p.title,
               datePublished: p.date,
-              image: p.image,
+              image: new URL(p.image, "https://www.ritetutor.com").href,
               url: `https://www.ritetutor.com/blogs/${p.slug}`,
             })),
           })}

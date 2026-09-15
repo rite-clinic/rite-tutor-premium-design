@@ -4,8 +4,9 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ContactCTA } from "@/contexts/ContactModalContext";
-import { ArrowLeft, ArrowRight, Calendar, Clock, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, Download, Phone } from "lucide-react";
 import { getPostBySlug, getRelatedPosts } from "@/data/blogData";
+import { BlogContent } from "@/components/BlogContent";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -16,12 +17,13 @@ const BlogPost = () => {
   }
 
   const related = getRelatedPosts(post.slug, 3);
+  const imageUrl = new URL(post.image, "https://www.ritetutor.com").href;
 
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    image: post.image,
+    image: imageUrl,
     datePublished: post.date,
     author: { "@type": "Organization", name: "Rite Tutor" },
     publisher: {
@@ -41,7 +43,7 @@ const BlogPost = () => {
         <link rel="canonical" href={`https://www.ritetutor.com/blogs/${post.slug}`} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={post.image} />
+        <meta property="og:image" content={imageUrl} />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
@@ -99,30 +101,19 @@ const BlogPost = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
               >
-                {post.content.map((paragraph, index) => {
-                  if (paragraph.startsWith("## ")) {
-                    return (
-                      <h2
-                        key={index}
-                        className="text-2xl md:text-3xl font-display font-bold mt-12 mb-4 text-foreground"
-                      >
-                        {paragraph.replace("## ", "")}
-                      </h2>
-                    );
-                  }
-                  return (
-                    <p
-                      key={index}
-                      className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5"
-                      dangerouslySetInnerHTML={{
-                        __html: paragraph.replace(
-                          /\*\*(.*?)\*\*/g,
-                          '<strong class="text-foreground font-semibold">$1</strong>'
-                        ),
-                      }}
-                    />
-                  );
-                })}
+                <BlogContent content={post.content} />
+                {post.download && (
+                  <aside aria-label="Free printable resource" className="mt-12 rounded-2xl border border-primary/30 bg-primary/5 p-6 md:p-8">
+                    <p className="text-sm font-semibold text-muted-foreground mb-2">Free printable PDF · 2 pages</p>
+                    <h2 className="text-2xl font-display font-bold mb-3">{post.download.title}</h2>
+                    <p className="text-muted-foreground leading-relaxed mb-5">{post.download.description}</p>
+                    <Button variant="hero" size="lg" asChild>
+                      <a href={post.download.href} download>
+                        <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
+                      </a>
+                    </Button>
+                  </aside>
+                )}
               </motion.div>
             </div>
           </section>

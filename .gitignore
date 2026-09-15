@@ -11,6 +11,17 @@ node_modules
 dist
 dist-ssr
 *.local
+tmp
+
+# Generated PDF copies (the website uses public/downloads/)
+/output/pdf/
+
+# Local import scripts, verification scripts, and preview screenshots
+*.local.*
+
+# Python caches from the PDF generation script
+__pycache__/
+*.pyc
 
 # Editor directories and files
 .vscode/*
