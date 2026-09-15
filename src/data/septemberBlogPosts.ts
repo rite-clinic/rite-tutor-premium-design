@@ -9,7 +9,7 @@ export const septemberBlogPosts: BlogPost[] = [
     "category": "Parent Guidance",
     "date": "September 15, 2026",
     "readTime": "12 min read",
-    "image": "/images/blogs/september-2026/blog-01-1.png",
+    "image": "/images/blogs/september-2026/blog-01-1.webp",
     "imageAlt": "Parent comparing online tutors on a laptop with a checklist",
     "content": [
       "Search \"online tutor for kids\" and you'll drown in options. Big platforms, small studios, freelancers, apps, agencies, marketplaces — each promising results, glowing reviews, and a better future for your child. Every one of them looks reasonable on the surface.",
@@ -34,7 +34,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "Keep these five in mind, because a genuinely good tutor will deliver all of them — and a mediocre one will be missing several. Your job as a parent is to look past the marketing and check for these underlying ingredients. The checklist that follows is organized around exactly that.",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-01-2.png",
+        "src": "/images/blogs/september-2026/blog-01-2.webp",
         "alt": "Seven tutor evaluation areas: one-to-one, tutor vetting, teaching approach, progress tracking, relationship, real outcomes, and practical fit"
       },
       "## The Evidence-Based Checklist: Seven Areas to Evaluate",
@@ -104,7 +104,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "A cheap group class or self-paced app that delivers little means you eventually pay again for another program, and another. A genuinely effective tutor who costs more per hour but produces real, lasting mastery in a fraction of the time is often dramatically better value. Always ask: *what am I actually getting for this, and what will my child be able to do at the end?* Judge the price against that, not against the number on the invoice.",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-01-3.png",
+        "src": "/images/blogs/september-2026/blog-01-3.webp",
         "alt": "Parent comparing tutor profiles using a scorecard"
       },
       "## How to Use the Scorecard",
@@ -135,7 +135,7 @@ export const septemberBlogPosts: BlogPost[] = [
     "category": "Educational Philosophy",
     "date": "September 15, 2026",
     "readTime": "13 min read",
-    "image": "/images/blogs/september-2026/blog-02-1.png",
+    "image": "/images/blogs/september-2026/blog-02-1.webp",
     "imageAlt": "Children following a coding learning path from building blocks to artificial intelligence",
     "content": [
       "If you've searched for a coding roadmap for kids, you've probably seen the same thing everywhere: a neat chart that says *ages 6–8 do this, ages 9–11 do that, ages 12–15 do the other.* Tidy. Simple. And quietly wrong.",
@@ -171,7 +171,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "Our downloadable [coding readiness checklist](/downloads/coding-readiness-checklist.pdf) walks you through these signals in detail, so you can pinpoint your child's stage with confidence. But even a rough placement from the stages below will get you close.",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-02-2.png",
+        "src": "/images/blogs/september-2026/blog-02-2.webp",
         "alt": "Four coding stages: foundations, real code, web development, and professional tools and AI"
       },
       "## Stage 1: Foundations — Building the Thinking (Typical Entry: Early Beginners)",
@@ -288,7 +288,7 @@ export const septemberBlogPosts: BlogPost[] = [
     "category": "Math Education",
     "date": "September 15, 2026",
     "readTime": "9 min read",
-    "image": "/images/blogs/september-2026/blog-03-1.png",
+    "image": "/images/blogs/september-2026/blog-03-1.webp",
     "imageAlt": "Child considering a math problem while working at a desk",
     "content": [
       "Your child brings home a math test with a good score. The answers are right. The teacher's happy. You're relieved. Everything seems fine.",
@@ -298,7 +298,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "## The Difference Between Doing and Understanding",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-03-2.png",
+        "src": "/images/blogs/september-2026/blog-03-2.webp",
         "alt": "Two houses comparing a solid foundation of understanding with memorized math steps"
       },
       "There are two completely different ways a child can arrive at a correct math answer.",
@@ -328,7 +328,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "## How to Tell If Your Child Truly Understands",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-03-3.png",
+        "src": "/images/blogs/september-2026/blog-03-3.webp",
         "alt": "Parent asking a child why a math solution works"
       },
       "The good news: the gap between answers and understanding is easy to detect once you know how to look. You don't need to be a math expert — you just need to ask the right kinds of questions. Right answers alone won't reveal understanding, but these will:",
@@ -391,7 +391,7 @@ export const septemberBlogPosts: BlogPost[] = [
     "category": "Parent Guidance",
     "date": "September 15, 2026",
     "readTime": "8 min read",
-    "image": "/images/blogs/september-2026/blog-04-1.png",
+    "image": "/images/blogs/september-2026/blog-04-1.webp",
     "imageAlt": "Child moving from visual coding blocks to Python on a laptop",
     "content": [
       "Your child has been coding with visual blocks for a while now, and they seem to be enjoying it. Maybe they've mentioned wanting to do \"real\" coding. Maybe you've heard that Python is the language professionals actually use, and you're wondering: *is my child ready for that leap?*",
@@ -403,7 +403,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "The leap from visual blocks to Python is one of the most empowering moments in a young coder's journey — the moment they stop \"playing at coding\" and start thinking of themselves as a real programmer. But like any leap, it works best when the child is ready to make it. The twelve signs below tell you if that moment has arrived.",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-04-2.png",
+        "src": "/images/blogs/september-2026/blog-04-2.webp",
         "alt": "Three groups of Python readiness signs: foundations, readiness, and motivation"
       },
       "## Foundational Signs: Do They Have the Building Blocks?",
@@ -421,7 +421,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "## Motivation Signs: Do They Want the Leap?",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-04-3.png",
+        "src": "/images/blogs/september-2026/blog-04-3.webp",
         "alt": "Parent and child exploring real code with a twelve-sign readiness checklist"
       },
       "Readiness isn't only about ability — motivation matters enormously, because the transition takes a little effort and a motivated child pushes through it happily.",
@@ -469,7 +469,7 @@ export const septemberBlogPosts: BlogPost[] = [
     "category": "Math Education",
     "date": "September 15, 2026",
     "readTime": "10 min read",
-    "image": "/images/blogs/september-2026/blog-05-1.png",
+    "image": "/images/blogs/september-2026/blog-05-1.webp",
     "imageAlt": "Student following math stepping stones toward an algebra doorway",
     "content": [
       "Algebra 1 is a turning point. For many students, it's the first math course that feels genuinely abstract — the moment numbers give way to letters, and \"find the answer\" becomes \"solve for the unknown.\" Handled well, it opens the door to all of higher math. Handled poorly, it becomes the wall a student hits and never quite recovers from.",
@@ -482,7 +482,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "With that in mind, here are the six areas to check.",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-05-2.png",
+        "src": "/images/blogs/september-2026/blog-05-2.webp",
         "alt": "Six algebra foundations: operations with negatives, fractions and percentages, order of operations, number sense, variables, and logical reasoning"
       },
       "## Skill 1: Fluency With the Four Operations (Including Negatives)",
@@ -517,7 +517,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "## Why Closing Gaps Works Best One-to-One",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-05-3.png",
+        "src": "/images/blogs/september-2026/blog-05-3.webp",
         "alt": "Parent and child checking math foundations together to find gaps early"
       },
       "Here's the challenge with prerequisite gaps: they're specific to each child. One student's weak spot is fractions; another's is negative numbers; another's is the conceptual leap to variables. A generic review course treats everyone the same, spending time on skills a child already has while rushing past the exact gap that matters most for *them*.",
@@ -545,7 +545,7 @@ export const septemberBlogPosts: BlogPost[] = [
     "category": "Industry Insights",
     "date": "September 15, 2026",
     "readTime": "11 min read",
-    "image": "/images/blogs/september-2026/blog-06-1.png",
+    "image": "/images/blogs/september-2026/blog-06-1.webp",
     "imageAlt": "Young coder considering code generated by an AI assistant",
     "content": [
       "It's the question quietly nagging at thoughtful parents everywhere: *If artificial intelligence can now write code, is it even worth my child learning to code at all?*",
@@ -573,7 +573,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "## The Six Durable Skills for the AI Era",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-06-2.png",
+        "src": "/images/blogs/september-2026/blog-06-2.webp",
         "alt": "Six AI-era skills: computational thinking, problem-solving, judging code, creativity, adaptability, and understanding AI"
       },
       "So what should children actually learn now? The skills that don't get automated away — the durable ones that make a person the director of AI rather than someone replaced by it. Here are six that matter most.",
@@ -587,7 +587,7 @@ export const septemberBlogPosts: BlogPost[] = [
       "## Why Learning to Code Still Builds All of This",
       {
         "type": "image",
-        "src": "/images/blogs/september-2026/blog-06-3.png",
+        "src": "/images/blogs/september-2026/blog-06-3.webp",
         "alt": "Two students using AI coding tools, illustrating the advantage of understanding the code"
       },
       "Here's the part that ties it together: learning to code — properly — is still one of the very best ways to build every one of those six durable skills.",

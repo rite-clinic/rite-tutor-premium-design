@@ -1,20 +1,9 @@
-import { Helmet } from 'react-helmet-async';
 import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Rocket, Code, Trophy, CheckCircle, Brain, Globe } from 'lucide-react';
-
-const pathwaysSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": [
-    { "@type": "Course", "position": 1, "name": "Logic Explorers (Foundations)", "description": "Visual logic development, computational thinking, and first coding concepts." },
-    { "@type": "Course", "position": 2, "name": "Digital Builders (Intermediate)", "description": "Text-based programming, debugging resilience, and project-based learning." },
-    { "@type": "Course", "position": 3, "name": "Junior CTOs (Advanced)", "description": "University-level coursework, professional certifications, and advanced project development." }
-  ]
-};
 
 const pathways = [
   {
@@ -91,15 +80,7 @@ const timelines = [
 const LearningPathways = () => {
   return (
     <>
-      <Helmet>
-        <title>Learning Pathways | From Logic Explorer to Junior CTO | Rite Tutor</title>
-        <meta name="description" content="Three skill-based pathways that students progress through based on demonstrated mastery, not calendar age. From Logic Explorers to Digital Builders to Junior CTOs." />
-        <meta name="keywords" content="coding curriculum for kids, computer science pathway, skill-based coding education, personalized learning path" />
-        <link rel="canonical" href="https://www.ritetutor.com/learning-pathways" />
-        <script type="application/ld+json">{JSON.stringify(pathwaysSchema)}</script>
-      </Helmet>
-      
-      <Layout>
+<Layout>
         {/* Hero */}
         <section className="relative bg-card py-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />

@@ -1,0 +1,73 @@
+import { build, loadEnv } from 'vite';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
+
+process.env.NODE_ENV = 'production';
+const root = process.cwd();
+const site = 'https://www.ritetutor.com';
+const env = { ...loadEnv('production', root, ''), ...process.env };
+const api = (env.VITE_API_BASE_URL || 'https://ritetutor.com/backend/api').replace(/\/$/, '');
+
+async function publicCourses() {
+  if (env.SEO_COURSES_FILE) return validate(JSON.parse(await readFile(env.SEO_COURSES_FILE, 'utf8')));
+  let failure;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const response = await fetch(`${api}/courses-list/`, { signal: AbortSignal.timeout(15000) });
+      if (!response.ok) throw new Error(`Course API returned HTTP ${response.status}`);
+      return validate(await response.json());
+    } catch (error) { failure = error; }
+  }
+  throw new Error('Cannot build fresh course pages. Check the public course API and rebuild. ' + failure.message);
+}
+
+function validate(data) {
+  const list = Array.isArray(data) ? data : data?.data;
+  if (!Array.isArray(list)) throw new Error('Course API returned an invalid catalog.');
+  const courses = list.filter(course => course.is_course_verified === true && course.show_on_website === true);
+  if (courses.some(course => !Number.isInteger(course.id) || course.id <= 0 || !course.title?.trim())) throw new Error('A public course has an invalid ID or title.');
+  if (new Set(courses.map(course => course.id)).size !== courses.length) throw new Error('Duplicate public course IDs.');
+  // The public endpoint includes fields the website does not need (such as
+  // author email addresses). Keep the embedded payload limited to display data.
+  const fields = ['id', 'title', 'subtitle', 'intro', 'course_type', 'num_classes', 'duration', 'image', 'brochure', 'charges', 'description', 'is_course_verified', 'show_on_website'];
+  return courses.map(course => ({
+    ...Object.fromEntries(fields.filter(key => course[key] !== undefined).map(key => [key, course[key]])),
+    author: course.author ? { first_name: course.author.first_name, last_name: course.author.last_name } : null,
+    subcourses: (course.subcourses || []).map(item => ({ id: item.id, title: item.title, description: item.description, active: item.active, visible_to_free_users: item.visible_to_free_users, ...(item.visible_to_free_users && item.file ? { file: item.file } : {}) })),
+  }));
+}
+
+const courses = await publicCourses();
+await build();
+await build({ build: { ssr: 'src/entry-server.tsx', outDir: '.seo-build', emptyOutDir: true, copyPublicDir: false }, ssr: { noExternal: ['react-helmet-async'] } });
+const { render, staticPaths } = await import(pathToFileURL(path.join(root, '.seo-build/entry-server.js')).href);
+const template = await readFile('dist/index.html', 'utf8');
+if (!template.includes('<!--seo-head-->') || !template.includes('<!--app-html-->')) throw new Error('SEO template markers are missing.');
+const routes = [...staticPaths, ...courses.map(course => `/courses/${course.id}`)];
+const escapeXml = value => value.replace(/[<>&"']/g, c => ({ '<':'&lt;', '>':'&gt;', '&':'&amp;', '"':'&quot;', "'":'&apos;' })[c]);
+const serialize = data => JSON.stringify(data).replace(/</g, '\\u003c');
+
+for (const route of [...routes, '/404']) {
+  // Only serialize the public records needed by this page; never booking data.
+  const data = route === '/courses' ? { courses } : route.startsWith('/courses/') ? { courses: courses.filter(course => route === `/courses/${course.id}`) } : {};
+  const { html, head } = render(route, data);
+  const output = template.replace('<html lang="en">', '<html lang="en" data-prerendered>')
+    .replace('<!--seo-head-->', head)
+    .replace('<!--app-html-->', () => html)
+    .replace('</body>', () => `<script type="application/json" id="prerender-data">${serialize(data)}</script></body>`);
+  const filename = route === '/' ? 'dist/index.html' : `dist${route}.html`;
+  await mkdir(path.dirname(filename), { recursive: true });
+  await writeFile(filename, output);
+}
+
+const { head: privateHead } = render('/thank-you/confirmation', {});
+await writeFile('dist/app-shell.html', template.replace('<!--seo-head-->', privateHead).replace('<!--app-html-->', ''));
+
+// No fabricated modification dates or unsupported priority/change frequency hints.
+await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route => `  <url><loc>${escapeXml(site + (route === '/' ? '/' : route))}</loc></url>`).join('\n')}\n</urlset>\n`);
+
+const aliases = staticPaths.filter(route => route.startsWith('/blogs/')).map(route => [route.replace('/blogs/', '/blog/'), route]);
+const redirectRules = [['/blog','/blogs'], ...aliases].map(([from,to]) => `RewriteRule ^${from.slice(1)}$ ${to} [R=301,L,NE]`).join('\n');
+await writeFile('dist/.htaccess', `# Generated by scripts/build-seo.mjs. Apache must allow FileInfo overrides.\nOptions -MultiViews\nDirectoryIndex index.html\nErrorDocument 404 /404.html\n<IfModule mod_rewrite.c>\nRewriteEngine On\n# Normalize known legacy blog URLs before resolving files.\n${redirectRules}\nRewriteCond %{THE_REQUEST} \\s/+index\\.html[\\s?] [NC]\nRewriteRule ^index\\.html$ / [R=301,L]\nRewriteCond %{THE_REQUEST} \\s/+([^?\\ ]+)\\.html[\\s?] [NC]\nRewriteCond %{REQUEST_URI} !^/404\\.html$\nRewriteRule ^(.+)\\.html$ /$1 [R=301,L,NE]\nRewriteRule ^(.+)/$ /$1 [R=301,L,NE]\n# Serve generated pages before Apache considers same-name directories.\nRewriteCond %{REQUEST_FILENAME}.html -f\nRewriteRule ^(.+)$ $1.html [END]\nRewriteCond %{REQUEST_FILENAME} -f\nRewriteRule ^ - [END]\n# Private confirmation URLs remain client-side and noindex.\nRewriteRule ^thank-you(?:/[^/]+)?$ app-shell.html [END]\n# Unknown content must be an actual 404, not the homepage with HTTP 200.\nRewriteRule ^.+$ - [R=404,L]\n</IfModule>\n<IfModule mod_headers.c>\n<FilesMatch "\\.(?:html)$">\nHeader set Cache-Control "no-cache"\n</FilesMatch>\n<FilesMatch "\\.(?:js|css|woff2)$">\nHeader set Cache-Control "public, max-age=31536000, immutable"\n</FilesMatch>\n</IfModule>\n`);
+console.log(`SEO build complete: ${routes.length} indexable pages, ${courses.length} public courses, sitemap.xml, and Apache routing.`);

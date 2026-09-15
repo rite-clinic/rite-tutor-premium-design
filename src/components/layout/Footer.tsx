@@ -13,13 +13,13 @@ const footerLinks = {
   company: [
     { name: 'About Us', href: '/about-us' },
     { name: 'Pricing', href: '/pricing' },
-    { name: 'Blog', href: '/blog' },
+    { name: 'Blog', href: '/blogs' },
     { name: 'Contact', href: '/contact' },
   ],
   resources: [
-    { name: 'Blog', href: '/blog' },
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
+    { name: 'Parent Guides & Downloads', href: '/blogs' },
+    { name: 'All Subjects & Grades', href: '/online-tutoring-all-subjects' },
+    { name: 'Bloomington & Indiana', href: '/online-tutoring-bloomington-indiana' },
   ],
 };
 
@@ -39,7 +39,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-background/70 mb-6 max-w-md">
-              Premium one-to-one online coding and logical thinking tutoring for children aged 6-15. Building Junior CTOs, not just coders.
+              One-to-one online tutoring across school subjects and grades, with math, coding, AI, and personalized learning for families in the US and worldwide.
             </p>
             <div className="space-y-3">
               <a 

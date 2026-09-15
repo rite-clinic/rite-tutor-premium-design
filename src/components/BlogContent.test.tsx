@@ -14,7 +14,7 @@ describe("blog article content", () => {
           "A **strong foundation** with *individual guidance*.",
           "### Supporting section",
           { type: "list", items: ["Ask **why**.", "Explore [Learning Pathways](/learning-pathways)."] },
-          { type: "image", src: "/images/blogs/september-2026/blog-01-2.png", alt: "Tutor evaluation criteria" },
+          { type: "image", src: "/images/blogs/september-2026/blog-01-2.webp", alt: "Tutor evaluation criteria" },
           "Treat <script>alert('example')</script> as text.",
           "Get the [parent scorecard](/downloads/online-tutor-parent-scorecard.pdf).",
         ]} />

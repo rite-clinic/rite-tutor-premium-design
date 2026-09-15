@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { usePrerenderData } from "@/contexts/PrerenderContext";
 
 import {
   AlertCircle,
@@ -30,18 +30,10 @@ import {
   type Course,
 } from "@/services/courseService";
 
-const coursesSchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Courses for Kids | Rite Tutor",
-  description:
-    "Explore interactive learning courses for kids designed to build creativity, confidence, problem-solving and real-world skills.",
-  url: "https://www.ritetutor.com/courses",
-};
-
 const Courses = () => {
-  const [courses, setCourses] = useState<Course[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { courses: initialCourses } = usePrerenderData();
+  const [courses, setCourses] = useState<Course[]>(initialCourses || []);
+  const [isLoading, setIsLoading] = useState(!initialCourses);
 
   const [error, setError] = useState<string | null>(null);
 
@@ -56,7 +48,7 @@ const Courses = () => {
   useEffect(() => {
     let active = true;
 
-    setIsLoading(true);
+    setIsLoading(!initialCourses);
     setError(null);
 
     getCourses()
@@ -82,7 +74,7 @@ const Courses = () => {
     return () => {
       active = false;
     };
-  }, [reloadKey]);
+  }, [reloadKey, initialCourses]);
 
   /* =========================================================
       SEARCH
@@ -114,47 +106,7 @@ const Courses = () => {
           SEO
       ====================================================== */}
 
-      <Helmet>
-        <title>
-          Fun & Interactive Courses for Kids | Rite Tutor
-        </title>
-
-        <meta
-          name="description"
-          content="Explore engaging and interactive learning programs for kids at Rite Tutor. Help your child build creativity, confidence, problem-solving and practical skills."
-        />
-
-        <link
-          rel="canonical"
-          href="https://www.ritetutor.com/courses"
-        />
-
-        <meta
-          property="og:title"
-          content="Fun & Interactive Courses for Kids | Rite Tutor"
-        />
-
-        <meta
-          property="og:description"
-          content="Explore engaging courses created to make learning exciting, practical and enjoyable for children."
-        />
-
-        <meta
-          property="og:type"
-          content="website"
-        />
-
-        <meta
-          property="og:url"
-          content="https://www.ritetutor.com/courses"
-        />
-
-        <script type="application/ld+json">
-          {JSON.stringify(coursesSchema)}
-        </script>
-      </Helmet>
-
-      <Layout>
+<Layout>
         {/* =====================================================
             HERO
         ====================================================== */}

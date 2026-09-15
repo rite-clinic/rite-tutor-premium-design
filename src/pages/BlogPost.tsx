@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
@@ -7,6 +6,7 @@ import { ContactCTA } from "@/contexts/ContactModalContext";
 import { ArrowLeft, ArrowRight, Calendar, Clock, Download, Phone } from "lucide-react";
 import { getPostBySlug, getRelatedPosts } from "@/data/blogData";
 import { BlogContent } from "@/components/BlogContent";
+import { isoDate } from "@/lib/seo";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -17,38 +17,11 @@ const BlogPost = () => {
   }
 
   const related = getRelatedPosts(post.slug, 3);
-  const imageUrl = new URL(post.image, "https://www.ritetutor.com").href;
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    image: imageUrl,
-    datePublished: post.date,
-    author: { "@type": "Organization", name: "Rite Tutor" },
-    publisher: {
-      "@type": "Organization",
-      name: "Rite Tutor",
-      logo: { "@type": "ImageObject", url: "https://www.ritetutor.com/images/logo.png" },
-    },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.ritetutor.com/blogs/${post.slug}` },
-    description: post.excerpt,
-  };
 
   return (
     <>
-      <Helmet>
-        <title>{post.title} | Rite Tutor Blog</title>
-        <meta name="description" content={post.excerpt} />
-        <link rel="canonical" href={`https://www.ritetutor.com/blogs/${post.slug}`} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:type" content="article" />
-        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
-      </Helmet>
-
-      <Layout>
+<Layout>
         <article>
           {/* Banner */}
           <section className="relative bg-card pt-12 pb-8">
@@ -71,7 +44,8 @@ const BlogPost = () => {
                   {post.title}
                 </h1>
                 <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {post.date}</span>
+                  <span>By <Link to="/about-us" className="underline underline-offset-4">Rite Tutor</Link></span>
+                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> <time dateTime={isoDate(post.date)}>{post.date}</time></span>
                   <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {post.readTime}</span>
                 </div>
               </motion.div>

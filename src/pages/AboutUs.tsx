@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -7,26 +6,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Brain, Target, CheckCircle, Lightbulb, BarChart3, Github, Award, MessageCircle, Users, Shield, Globe, Phone } from 'lucide-react';
 import familyImage from '@/assets/family-learning.jpg';
 import mentorImage from '@/assets/mentor-teaching.jpg';
-
-const aboutSchema = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "mainEntity": {
-    "@type": "EducationalOrganization",
-    "name": "Rite Tutor",
-    "description": "Premium one-to-one online coding education for students ages 6-15 with global reach",
-    "url": "https://www.ritetutor.com",
-    "telephone": "+1-929-421-8055",
-    "address": { "@type": "PostalAddress", "addressCountry": "United States" },
-    "areaServed": [
-      { "@type": "Country", "name": "United States" },
-      { "@type": "Country", "name": "Canada" },
-      { "@type": "Country", "name": "United Kingdom" },
-      { "@type": "Country", "name": "Australia" },
-      { "@type": "Place", "name": "Global" }
-    ]
-  }
-};
 
 const AboutUs = () => {
   const mentorQualities = [
@@ -62,15 +41,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <Helmet>
-        <title>About Rite Tutor | Premium Online Coding Education | Global Reach</title>
-        <meta name="description" content="Discover why families worldwide choose Rite Tutor for personalized coding mentorship. We build Junior CTOs through skill-based progression and transparent education. Learn our story and methodology." />
-        <meta name="keywords" content="about Rite Tutor, online coding education philosophy, skill-based learning, personalized programming instruction, coding mentorship approach, one-to-one tutoring methodology" />
-        <link rel="canonical" href="https://www.ritetutor.com/about-us" />
-        <script type="application/ld+json">{JSON.stringify(aboutSchema)}</script>
-      </Helmet>
-      
-      <Layout>
+<Layout>
         {/* Hero Section */}
         <section className="relative bg-card py-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />

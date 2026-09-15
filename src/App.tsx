@@ -4,24 +4,15 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
+import { SiteSeo } from "@/components/Seo";
+import { MarketingMeasurement } from "@/components/MarketingMeasurement";
+import { PrerenderContext, type PrerenderData } from "@/contexts/PrerenderContext";
 
 import { ContactModalProvider } from "@/contexts/ContactModalContext";
 
-import Index from "./pages/Index";
-import AboutUs from "./pages/AboutUs";
-import HowItWorks from "./pages/HowItWorks";
-import LearningPathways from "./pages/LearningPathways";
-import Projects from "./pages/Projects";
-import Courses from "./pages/Courses";
-import CourseDetails from "./pages/CourseDetails";
-import Pricing from "./pages/Pricing";
-import Services from "./pages/Services";
-import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import ThankYou from "./pages/ThankYou";
-import NotFound from "./pages/NotFound";
+
+import { Index, AboutUs, HowItWorks, LearningPathways, Projects, Courses, CourseDetails, Pricing, Services, Contact, Blog, BlogPost, ThankYou, NotFound, AllSubjects, BloomingtonTutoring } from "@/route-pages";
 
 const queryClient = new QueryClient();
 
@@ -29,19 +20,23 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    const timer = window.setTimeout(() => document.documentElement.removeAttribute("data-prerendered"), 1200);
+    return () => window.clearTimeout(timer);
   }, [pathname]);
   return null;
 };
 
-const App = () => (
-  <HelmetProvider>
+export const AppContent = ({ data = {} }: { data?: PrerenderData }) => (
+  <PrerenderContext.Provider value={data}>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
           <ContactModalProvider>
             <ScrollToTop />
+            <SiteSeo />
+            <MarketingMeasurement />
+            <Suspense fallback={<main className="container-wide py-20" aria-busy="true">Loading page?</main>}>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about-us" element={<AboutUs />} />
@@ -55,6 +50,8 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/blogs" element={<Blog />} />
               <Route path="/blogs/:slug" element={<BlogPost />} />
+              <Route path="/online-tutoring-all-subjects" element={<AllSubjects />} />
+              <Route path="/online-tutoring-bloomington-indiana" element={<BloomingtonTutoring />} />
               {/* Backward-compatible aliases */}
               <Route path="/blog" element={<Navigate to="/blogs" replace />} />
               <Route path="/blog/:slug" element={<BlogPostRedirect />} />
@@ -62,11 +59,15 @@ const App = () => (
               <Route path="/thank-you/:token" element={<ThankYou />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </Suspense>
           </ContactModalProvider>
-        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
-  </HelmetProvider>
+  </PrerenderContext.Provider>
+);
+
+const App = ({ data }: { data?: PrerenderData }) => (
+  <HelmetProvider><BrowserRouter><AppContent data={data} /></BrowserRouter></HelmetProvider>
 );
 
 // Redirect old /blog/:slug → /blogs/:slug

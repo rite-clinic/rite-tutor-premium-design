@@ -1,24 +1,9 @@
-import { Helmet } from 'react-helmet-async';
 import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle, Clock, Users, Briefcase, TrendingUp, GraduationCap, DollarSign, XCircle, Star } from 'lucide-react';
-
-const pricingSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "One-to-One Online Coding Mentorship",
-  "description": "Premium one-to-one mentorship delivered worldwide.",
-  "brand": { "@type": "Brand", "name": "Rite Tutor" },
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "areaServed": { "@type": "Place", "name": "Worldwide" }
-  }
-};
 
 const tiers = [
   {
@@ -90,15 +75,7 @@ const roiExamples = [
 const Pricing = () => {
   return (
     <>
-      <Helmet>
-        <title>Investment in Excellence | Understanding the Rite Tutor Model | Rite Tutor</title>
-        <meta name="description" content="Quality education isn't a commodity. Understand the true value of investing in your child's coding education with personalized one-to-one mentorship from Rite Tutor." />
-        <meta name="keywords" content="coding tutoring pricing, online coding classes cost, one-to-one tutoring investment, educational ROI" />
-        <link rel="canonical" href="https://www.ritetutor.com/pricing" />
-        <script type="application/ld+json">{JSON.stringify(pricingSchema)}</script>
-      </Helmet>
-      
-      <Layout>
+<Layout>
         {/* Hero */}
         <section className="relative bg-card py-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />

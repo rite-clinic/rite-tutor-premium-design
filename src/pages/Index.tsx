@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { 
   HeroSection, 
@@ -14,71 +14,25 @@ import {
   CTASection 
 } from '@/components/sections/HomeSections';
 
-const homeSchema = {
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "Rite Tutor",
-  "alternateName": "RiteTutor",
-  "description": "Premium one-to-one online coding education for students ages 6-15. Building logical thinkers through personalized mentorship with global reach.",
-  "url": "https://www.ritetutor.com",
-  "logo": "https://www.ritetutor.com/images/logo.png",
-  "image": "https://www.ritetutor.com/images/hero-image.jpg",
-  "email": "hello@ritetutor.com",
-  "telephone": "+1-929-421-8055",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "United States"
-  },
-  "areaServed": [
-    { "@type": "Country", "name": "United States" },
-    { "@type": "Country", "name": "Canada" },
-    { "@type": "Country", "name": "United Kingdom" },
-    { "@type": "Country", "name": "Australia" },
-    { "@type": "Place", "name": "Global" }
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "127",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
-};
-
-const serviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Online Coding Tutoring",
-  "provider": { "@type": "EducationalOrganization", "name": "Rite Tutor" },
-  "areaServed": { "@type": "Place", "name": "Worldwide" },
-  "availableChannel": { "@type": "ServiceChannel", "serviceUrl": "https://www.ritetutor.com", "serviceType": "Online Service" },
-  "audience": { "@type": "EducationalAudience", "audienceType": "Students ages 6-15" }
-};
-
 const Index = () => {
   return (
     <>
-      <Helmet>
-        <title>Online Coding Classes for Kids | One-to-One Mentorship | Rite Tutor</title>
-        <meta name="description" content="Premium one-to-one online coding mentorship for kids ages 6-15. We build Junior CTOs with deep logical thinking—not syntax memorizers. Serving families across the US & worldwide. Book your free strategy call today." />
-        <meta name="keywords" content="online coding classes for kids, one-to-one coding tutor, STEM education for kids, programming tutoring for children, coding mentorship" />
-        <link rel="canonical" href="https://www.ritetutor.com/" />
-        
-        <meta property="og:title" content="Online Coding Classes for Kids | One-to-One Mentorship | Rite Tutor" />
-        <meta property="og:description" content="Premium one-to-one online coding mentorship for kids ages 6-15. We build Junior CTOs with deep logical thinking—not syntax memorizers." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.ritetutor.com/" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify(homeSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(serviceSchema)}
-        </script>
-      </Helmet>
-      
-      <Layout>
+<Layout>
         <HeroSection />
+        <section className="py-12 bg-background">
+          <div className="container-wide grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl border border-border bg-card p-7">
+              <h2 className="text-2xl font-display font-bold mb-3">Tutoring for your child's subjects and grade</h2>
+              <p className="text-muted-foreground mb-4">Ask about school subjects, curriculum support, or coding enrichment. Start with a conversation about your child's learning goals.</p>
+              <Link to="/online-tutoring-all-subjects" className="font-semibold underline underline-offset-4">Explore all-subject online tutoring</Link>
+            </div>
+            <div className="rounded-2xl border border-border bg-card p-7">
+              <h2 className="text-2xl font-display font-bold mb-3">For Bloomington and Indiana families</h2>
+              <p className="text-muted-foreground mb-4">One-to-one lessons from home for families in Bloomington, Ellettsville, Bedford, Martinsville, Nashville, and across Indiana.</p>
+              <Link to="/online-tutoring-bloomington-indiana" className="font-semibold underline underline-offset-4">Learn about online tutoring in your area</Link>
+            </div>
+          </div>
+        </section>
         <OpeningSection />
         <WhyFamiliesChooseSection />
         <JuniorCTOMethodologySection />

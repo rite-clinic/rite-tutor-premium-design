@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -7,31 +6,10 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Search, Users, BookOpen, Briefcase, BarChart3, Brain, Code, Layers, Eye, Github, Award, CheckCircle } from 'lucide-react';
 import mentorImage from '@/assets/mentor-teaching.jpg';
 
-const howItWorksSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How Rite Tutor's Online Coding Mentorship Works",
-  "description": "From curiosity to capability through personalized online mentorship.",
-  "step": [
-    { "@type": "HowToStep", "name": "Logic-First Assessment", "text": "We assess how your child thinks through logic puzzles and pattern recognition." },
-    { "@type": "HowToStep", "name": "Perfect Mentor Matching", "text": "We match your child with an ideal mentor based on learning style and personality." },
-    { "@type": "HowToStep", "name": "Three-Pillar Learning", "text": "Logic, Syntax, and Product-based learning framework." },
-    { "@type": "HowToStep", "name": "Portfolio Development", "text": "Students build professional Junior CTO portfolios." }
-  ]
-};
-
 const HowItWorks = () => {
   return (
     <>
-      <Helmet>
-        <title>How It Works | From Curiosity to Capability | Rite Tutor</title>
-        <meta name="description" content="Discover how Rite Tutor transforms kids into logical thinkers through personalized online mentorship. Our four-step process builds Junior CTOs, not syntax memorizers." />
-        <meta name="keywords" content="how online coding tutoring works, personalized coding education, logic-first assessment kids" />
-        <link rel="canonical" href="https://www.ritetutor.com/how-it-works" />
-        <script type="application/ld+json">{JSON.stringify(howItWorksSchema)}</script>
-      </Helmet>
-      
-      <Layout>
+<Layout>
         {/* Hero */}
         <section className="relative bg-card py-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
@@ -219,7 +197,7 @@ const HowItWorks = () => {
               </p>
               <div className="mt-8">
                 <Button variant="hero" size="lg" asChild>
-                  <Link to="/blog" className="group">
+                  <Link to="/blogs" className="group">
                     See Student Portfolios
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>

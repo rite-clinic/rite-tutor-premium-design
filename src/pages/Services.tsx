@@ -1,22 +1,9 @@
-import { Helmet } from 'react-helmet-async';
 import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Code, Globe, Smartphone, Database, Gamepad2, Bot, Shield, Brain, Calculator, Palette, GraduationCap, Award, BookOpen } from 'lucide-react';
-
-const servicesSchema = {
-  "@context": "https://schema.org",
-  "@type": "Course",
-  "name": "One-to-One Coding Mentorship Program",
-  "description": "Personalized coding education from visual logic to professional development",
-  "provider": { "@type": "EducationalOrganization", "name": "Rite Tutor" },
-  "educationalLevel": "Beginner to Advanced",
-  "teaches": ["Python Programming", "Web Development", "Logical Thinking", "Problem Solving", "React.js", "Full-Stack Development"],
-  "availableLanguage": "en",
-  "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT1H" }
-};
 
 const coreServices = [
   {
@@ -108,15 +95,7 @@ const certifications = [
 const Services = () => {
   return (
     <>
-      <Helmet>
-        <title>Services | Comprehensive Technical Education | Rite Tutor</title>
-        <meta name="description" content="From Python programming to Harvard CS50 preparation. Explore Rite Tutor's comprehensive one-to-one online coding services for kids ages 6-15." />
-        <meta name="keywords" content="python tutoring for kids, web development classes children, React.js for kids, coding services Bloomington" />
-        <link rel="canonical" href="https://www.ritetutor.com/services" />
-        <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
-      </Helmet>
-      
-      <Layout>
+<Layout>
         {/* Hero */}
         <section className="relative bg-card py-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />

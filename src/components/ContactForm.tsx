@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { trackMarketingEvent } from "@/lib/analytics";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -204,6 +205,7 @@ export function ContactForm({ onSuccess, compact = false }: ContactFormProps) {
         referral_source: rest.referral_source.trim(),
       }, { headers: { "Content-Type": "application/json" }, timeout: 20000 });
 
+      trackMarketingEvent("generate_lead", { lead_type: "strategy_call" });
       try { sessionStorage.setItem("rt_last_submit", String(Date.now())); } catch {}
       setFormData(INITIAL_FORM);
       setErrors({});

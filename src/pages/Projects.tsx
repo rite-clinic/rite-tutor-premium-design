@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { ContactCTA } from '@/contexts/ContactModalContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -6,14 +5,6 @@ import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Globe, Calendar, Heart, Github, Award, Lightbulb, CheckCircle, MapPin, Users, Brain, Target } from 'lucide-react';
 import studentProject from '@/assets/student-project.jpg';
-
-const projectsSchema = {
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "name": "Student Coding Projects",
-  "description": "Real-world software applications built by Rite Tutor students in Bloomington and nationwide.",
-  "provider": { "@type": "Organization", "name": "Rite Tutor" }
-};
 
 const studentProjects = [
   {
@@ -64,15 +55,7 @@ const scholarshipAdvantages = [
 const Projects = () => {
   return (
     <>
-      <Helmet>
-        <title>Student Projects & Impact | Real Solutions, Real Results | Rite Tutor</title>
-        <meta name="description" content="See how Rite Tutor students build real-world applications that solve genuine problems. From Monroe County cleanup trackers to mental wellness companions." />
-        <meta name="keywords" content="student coding portfolio, coding projects for kids, community service projects, project-based learning" />
-        <link rel="canonical" href="https://www.ritetutor.com/projects" />
-        <script type="application/ld+json">{JSON.stringify(projectsSchema)}</script>
-      </Helmet>
-      
-      <Layout>
+<Layout>
         {/* Hero */}
         <section className="relative bg-card py-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />

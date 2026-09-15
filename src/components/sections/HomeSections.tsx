@@ -44,20 +44,20 @@ export function HeroSection() {
               variants={fadeInUp}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight"
             >
-              Transform Your Child Into a Logical Thinker,{' '}
-              <span className="text-primary">Not Just a Coder</span>
+              Online Tutoring That Helps Your Child{' '}
+              <span className="text-primary">Think, Learn & Build</span>
             </motion.h1>
             
             <motion.p 
               variants={fadeInUp}
               className="text-lg md:text-xl text-muted-foreground max-w-xl"
             >
-              Premium One-to-One Online Coding Mentorship That Builds Junior CTOs—Not Syntax Memorizers
+              One-to-one online tutoring across school subjects and grades, with math, coding, and AI for families in Bloomington, Indiana, the US, and worldwide.
             </motion.p>
             
             <motion.div 
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row sm:flex-wrap gap-4"
             >
               <ContactCTA variant="hero" size="xl" className="group">
                   Book Your Free Strategy Call
@@ -77,7 +77,7 @@ export function HeroSection() {
             
             <motion.div 
               variants={fadeInUp}
-              className="flex items-center gap-8 pt-4"
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-4"
             >
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-primary" />
@@ -89,7 +89,7 @@ export function HeroSection() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">Ages 6-15</span>
+                <span className="text-sm font-medium">All school grades</span>
               </div>
             </motion.div>
           </motion.div>
@@ -103,6 +103,9 @@ export function HeroSection() {
             <div className="relative rounded-2xl overflow-hidden shadow-premium-lg">
               <img 
                 src={heroImage} 
+                fetchPriority="high"
+                width={1200}
+                height={900}
                 alt="Child learning to code online with a mentor"
                 className="w-full aspect-[4/3] object-cover"
               />
@@ -482,7 +485,7 @@ export function RealResultsSection() {
           viewport={{ once: true }}
         >
           <Button variant="hero" size="lg" asChild>
-            <Link to="/blog" className="group">
+            <Link to="/blogs" className="group">
               See Student Success Stories
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>

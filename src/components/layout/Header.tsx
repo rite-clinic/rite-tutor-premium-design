@@ -16,6 +16,8 @@ const navigation = [
   { name: 'How It Works', href: '/how-it-works' },
   { name: 'Blog', href: '/blogs' },
   { name: 'Contact', href: '/contact' },
+  { name: 'All Subjects', href: '/online-tutoring-all-subjects' },
+  { name: 'Bloomington & Indiana', href: '/online-tutoring-bloomington-indiana' },
 ];
 
 export function Header() {
@@ -41,7 +43,7 @@ export function Header() {
       <div className="hidden lg:block bg-foreground text-background py-2">
         <div className="container-wide flex justify-between items-center text-sm">
           <p className="font-medium">
-            🎓 Premium 1-on-1 Online Coding Classes for Kids in Bloomington, IN
+            🎓 1-on-1 Online Tutoring for Bloomington, Indiana & Worldwide
           </p>
           <div className="flex items-center gap-6">
             <a href="mailto:hello@ritetutor.com" className="flex items-center gap-2 hover:text-primary transition-colors">

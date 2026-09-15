@@ -1,28 +1,8 @@
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ContactForm";
 import { Mail, MapPin, Phone, CheckCircle } from "lucide-react";
-
-const contactSchema = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  mainEntity: {
-    "@type": "EducationalOrganization",
-    name: "Rite Tutor",
-    telephone: "+1-929-421-8055",
-    email: "hello@ritetutor.com",
-    areaServed: { "@type": "Place", name: "Worldwide" },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer service",
-      telephone: "+1-929-421-8055",
-      availableLanguage: "English",
-      areaServed: "Worldwide",
-    },
-  },
-};
 
 const expectations = [
   { title: "Assess Your Child's Current Capabilities", description: "Through friendly dialogue and optional logic puzzles, we understand where your child actually is—not where age-based assessments say they should be." },
@@ -57,14 +37,7 @@ const goodFit = [
 const Contact = () => {
   return (
     <>
-      <Helmet>
-        <title>Contact Rite Tutor | Book Free Strategy Call | Global Coding Mentorship</title>
-        <meta name="description" content="Start the conversation about your child's future. Book a free 30-minute strategy call with Rite Tutor. Serving families across the US and worldwide." />
-        <link rel="canonical" href="https://www.ritetutor.com/contact" />
-        <script type="application/ld+json">{JSON.stringify(contactSchema)}</script>
-      </Helmet>
-
-      <Layout>
+<Layout>
         {/* Hero */}
         <section className="relative bg-card py-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />

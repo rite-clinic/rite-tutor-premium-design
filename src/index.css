@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 /* Rite Tutor Design System - Premium Education Brand */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -342,4 +341,10 @@
 
 .btn-premium:hover::before {
   transform: translateX(100%);
+}
+
+/* Keep pre-rendered content visible while JavaScript loads, or when it is disabled. */
+html[data-prerendered] #root [style*="opacity:0"] {
+  opacity: 1 !important;
+  transform: none !important;
 }

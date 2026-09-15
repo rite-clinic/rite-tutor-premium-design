@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
@@ -12,31 +11,7 @@ const Blog = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Coding Education Blog | STEM Insights & Student Success | Rite Tutor</title>
-        <meta
-          name="description"
-          content="Insights, stories, and breakthroughs from the Rite Tutor blog. Expert articles on coding education, logical thinking, student success stories, and practical guidance for parents."
-        />
-        <link rel="canonical" href="https://www.ritetutor.com/blogs" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            name: "Rite Tutor Blog",
-            url: "https://www.ritetutor.com/blogs",
-            blogPost: blogPosts.map((p) => ({
-              "@type": "BlogPosting",
-              headline: p.title,
-              datePublished: p.date,
-              image: new URL(p.image, "https://www.ritetutor.com").href,
-              url: `https://www.ritetutor.com/blogs/${p.slug}`,
-            })),
-          })}
-        </script>
-      </Helmet>
-
-      <Layout>
+<Layout>
         {/* Hero */}
         <section className="relative bg-card py-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />

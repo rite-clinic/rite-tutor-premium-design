@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { trackMarketingEvent } from "@/lib/analytics";
 import {
   AlertCircle,
   ArrowLeft,
@@ -177,6 +178,7 @@ export function DemoBookingModal({ course, open, onOpenChange }: Props) {
         course_id: Number(course.id),
         schedule_id: Number(selectedSlot.id),
       });
+      trackMarketingEvent("generate_lead", { lead_type: "course_demo", course_id: course.id });
       setStep("success");
     } catch (err) {
       const apiError = err as ApiError;
