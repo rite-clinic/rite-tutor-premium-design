@@ -10,6 +10,7 @@ import { MarketingMeasurement } from "@/components/MarketingMeasurement";
 import { PrerenderContext, type PrerenderData } from "@/contexts/PrerenderContext";
 
 import { ContactModalProvider } from "@/contexts/ContactModalContext";
+import { StickyStrategyCTA } from "@/components/layout/StickyStrategyCTA";
 
 
 import { Index, AboutUs, HowItWorks, LearningPathways, Projects, Courses, CourseDetails, Pricing, Services, Contact, Blog, BlogPost, ThankYou, NotFound, AllSubjects, BloomingtonTutoring } from "@/route-pages";
@@ -33,6 +34,7 @@ export const AppContent = ({ data = {} }: { data?: PrerenderData }) => (
         <Toaster />
         <Sonner />
           <ContactModalProvider>
+            <StickyStrategyCTA />
             <ScrollToTop />
             <SiteSeo />
             <MarketingMeasurement />

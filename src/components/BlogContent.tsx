@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { GatedDownload } from "@/components/GatedDownload";
 import type { BlogContentBlock } from "@/data/blogData";
 
 function InlineText({ text }: { text: string }) {
@@ -9,9 +10,9 @@ function InlineText({ text }: { text: string }) {
     if (link) {
       if (link[2].startsWith("/downloads/") && link[2].endsWith(".pdf")) {
         return (
-          <a key={index} href={link[2]} download className="text-primary underline underline-offset-4 hover:text-foreground">
+          <GatedDownload key={index} href={link[2]} download className="text-left text-primary underline underline-offset-4 hover:text-foreground">
             {link[1]}
-          </a>
+          </GatedDownload>
         );
       }
       return (

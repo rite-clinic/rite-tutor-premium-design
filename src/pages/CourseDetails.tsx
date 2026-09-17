@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { GatedDownload } from "@/components/GatedDownload";
 import { Link, useParams } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { usePrerenderData } from "@/contexts/PrerenderContext";
@@ -340,14 +341,13 @@ const CourseDetails = () => {
                           className="w-full rounded-xl sm:w-auto"
                           asChild
                         >
-                          <a
+                          <GatedDownload
                             href={course.brochure}
                             target="_blank"
-                            rel="noopener noreferrer"
                           >
                             <Download className="mr-2 h-5 w-5" />
                             View Course Brochure
-                          </a>
+                          </GatedDownload>
                         </Button>
                       )}
                     </div>

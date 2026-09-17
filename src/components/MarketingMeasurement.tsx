@@ -8,7 +8,6 @@ export function MarketingMeasurement() {
       const href = link?.getAttribute("href") || "";
       if (href.startsWith("tel:")) trackMarketingEvent("contact_click", { contact_method: "phone" });
       else if (href.startsWith("mailto:")) trackMarketingEvent("contact_click", { contact_method: "email" });
-      else if (href.startsWith("/downloads/") && href.endsWith(".pdf")) trackMarketingEvent("resource_download", { resource: href.split("/").pop() });
     };
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);

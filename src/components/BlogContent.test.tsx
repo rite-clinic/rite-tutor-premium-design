@@ -4,11 +4,13 @@ import { describe, expect, it } from "vitest";
 import { BlogContent } from "./BlogContent";
 import { blogPosts, getPostBySlug, getRelatedPosts } from "@/data/blogData";
 import { septemberBlogPosts } from "@/data/septemberBlogPosts";
+import { ContactModalProvider } from "@/contexts/ContactModalContext";
 
 describe("blog article content", () => {
   it("renders existing paragraphs and new headings, lists, links, and images", () => {
     render(
       <MemoryRouter>
+        <ContactModalProvider>
         <BlogContent content={[
           "## Main section",
           "A **strong foundation** with *individual guidance*.",
@@ -18,6 +20,7 @@ describe("blog article content", () => {
           "Treat <script>alert('example')</script> as text.",
           "Get the [parent scorecard](/downloads/online-tutor-parent-scorecard.pdf).",
         ]} />
+        </ContactModalProvider>
       </MemoryRouter>,
     );
     expect(screen.getByRole("heading", { level: 2, name: "Main section" })).toBeInTheDocument();
@@ -26,8 +29,8 @@ describe("blog article content", () => {
     expect(screen.getByText("individual guidance").tagName).toBe("EM");
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     expect(screen.getByRole("link", { name: "Learning Pathways" })).toHaveAttribute("href", "/learning-pathways");
-    expect(screen.getByRole("link", { name: "parent scorecard" })).toHaveAttribute("href", "/downloads/online-tutor-parent-scorecard.pdf");
-    expect(screen.getByRole("link", { name: "parent scorecard" })).toHaveAttribute("download");
+    expect(screen.getByRole("button", { name: "parent scorecard" })).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "parent scorecard" })).not.toBeInTheDocument();
     expect(screen.getByRole("img", { name: "Tutor evaluation criteria" })).toHaveAttribute("loading", "lazy");
     expect(document.querySelector("script")).toBeNull();
     expect(screen.getByText("Treat <script>alert('example')</script> as text.")).toBeInTheDocument();

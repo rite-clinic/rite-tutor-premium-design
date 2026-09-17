@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { GatedDownload } from "@/components/GatedDownload";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -82,9 +83,9 @@ const BlogPost = () => {
                     <h2 className="text-2xl font-display font-bold mb-3">{post.download.title}</h2>
                     <p className="text-muted-foreground leading-relaxed mb-5">{post.download.description}</p>
                     <Button variant="hero" size="lg" asChild>
-                      <a href={post.download.href} download>
+                      <GatedDownload href={post.download.href} download>
                         <Download className="w-4 h-4" aria-hidden="true" /> Download PDF
-                      </a>
+                      </GatedDownload>
                     </Button>
                   </aside>
                 )}

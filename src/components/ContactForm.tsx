@@ -60,9 +60,10 @@ const SUBMIT_COOLDOWN_MS = 8000;
 interface ContactFormProps {
   onSuccess?: () => void;
   compact?: boolean;
+  redirectOnSuccess?: boolean;
 }
 
-export function ContactForm({ onSuccess, compact = false }: ContactFormProps) {
+export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = true }: ContactFormProps) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [loading, setLoading] = useState(false);
@@ -166,7 +167,7 @@ export function ContactForm({ onSuccess, compact = false }: ContactFormProps) {
     setToast({ type: "", message: "" });
 
     if (formData.website) {
-      navigate(`/thank-you/${generateToken()}`);
+      if (redirectOnSuccess) navigate(`/thank-you/${generateToken()}`);
       return;
     }
 
@@ -211,7 +212,7 @@ export function ContactForm({ onSuccess, compact = false }: ContactFormProps) {
       setErrors({});
       setTouched({});
       onSuccess?.();
-      navigate(`/thank-you/${generateToken()}`);
+      if (redirectOnSuccess) navigate(`/thank-you/${generateToken()}`);
     } catch (error: any) {
       console.error(error);
       const serverMsg =
