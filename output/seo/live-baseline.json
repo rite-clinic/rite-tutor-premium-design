@@ -1,0 +1,849 @@
+{
+  "date": "2026-10-26",
+  "origin": "https://www.ritetutor.com",
+  "rows": [
+    {
+      "path": "/",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Rite Tutor | Online Tutoring for Kids, Coding & All Subjects",
+      "canonical": "https://www.ritetutor.com/",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Online Tutoring That Helps Your Child Think, Learn & Build",
+      "initialMainCharacters": 11534,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/about-us",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/about-us",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "About Rite Tutor | Personalized Online Learning for Kids",
+      "canonical": "https://www.ritetutor.com/about-us",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Building Thinkers, Not Just Coders: The Rite Tutor Story",
+      "initialMainCharacters": 8000,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/how-it-works",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/how-it-works",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "How Online Tutoring Works | Free Strategy Call | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/how-it-works",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "From Curiosity to Capability: The Rite Tutor Journey",
+      "initialMainCharacters": 6895,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/learning-pathways",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/learning-pathways",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Kids' Coding Learning Pathways | Beginner to AI | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/learning-pathways",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Your Child's Personalized Journey: From Logic Explorer to Junior CTO",
+      "initialMainCharacters": 7401,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses",
+      "status": 301,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses",
+          "status": 301,
+          "location": "https://www.ritetutor.com/courses/"
+        },
+        {
+          "url": "https://www.ritetutor.com/courses/",
+          "status": 301,
+          "location": "https://www.ritetutor.com/courses"
+        }
+      ],
+      "loop": true,
+      "title": "",
+      "initialMainCharacters": 0,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/projects",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/projects",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Student Coding Projects & Learning Outcomes | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/projects",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Don't Just Learn Theory— Build Solutions That Matter",
+      "initialMainCharacters": 4718,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/pricing",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/pricing",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Online Tutoring Pricing & Lesson Options | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/pricing",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Investment in Excellence: Understanding the Rite Tutor Model",
+      "initialMainCharacters": 6304,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/services",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Online Tutoring Services | All Subjects, Math & Coding | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/services",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Comprehensive Technical Education From Visual Logic to Professional Development",
+      "initialMainCharacters": 5248,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/contact",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Contact Rite Tutor | Book a Free Online Tutoring Consultation",
+      "canonical": "https://www.ritetutor.com/contact",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Start the Conversation: Your Free Strategy Call",
+      "initialMainCharacters": 4792,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs",
+      "status": 301,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs",
+          "status": 301,
+          "location": "https://www.ritetutor.com/blogs/"
+        },
+        {
+          "url": "https://www.ritetutor.com/blogs/",
+          "status": 301,
+          "location": "https://www.ritetutor.com/blogs"
+        }
+      ],
+      "loop": true,
+      "title": "",
+      "initialMainCharacters": 0,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/online-tutoring-bloomington-indiana",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/online-tutoring-bloomington-indiana",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Online Tutoring in Bloomington, Indiana | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/online-tutoring-bloomington-indiana",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Online tutoring for Bloomington, Indiana families",
+      "initialMainCharacters": 3555,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/online-tutoring-all-subjects",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/online-tutoring-all-subjects",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Online Tutoring for All School Subjects & Grades | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/online-tutoring-all-subjects",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Online tutoring for all school subjects and grades",
+      "initialMainCharacters": 3311,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/gifted-child-bored-coding-class",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/gifted-child-bored-coding-class",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Why Your Gifted Child is Bored in Coding Class (And What To Do About It) | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/gifted-child-bored-coding-class",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Why Your Gifted Child is Bored in Coding Class (And What To Do About It)",
+      "initialMainCharacters": 3993,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/portfolio-advantage-github-college",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/portfolio-advantage-github-college",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "The Portfolio Advantage: Why GitHub Profiles Beat Certificates in College Applications | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/portfolio-advantage-github-college",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "The Portfolio Advantage: Why GitHub Profiles Beat Certificates in College Applications",
+      "initialMainCharacters": 3459,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/teaching-method-not-child-problem",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/teaching-method-not-child-problem",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "From D to A: When the Teaching Method, Not the Child, is the Problem | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/teaching-method-not-child-problem",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "From D to A: When the Teaching Method, Not the Child, is the Problem",
+      "initialMainCharacters": 3337,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/hidden-cost-cheap-coding-classes",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/hidden-cost-cheap-coding-classes",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "The Hidden Cost of 'Cheap' Coding Classes: Time You Can't Get Back | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/hidden-cost-cheap-coding-classes",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "The Hidden Cost of 'Cheap' Coding Classes: Time You Can't Get Back",
+      "initialMainCharacters": 3063,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/why-logic-before-syntax",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/why-logic-before-syntax",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Why We Teach Logic Before Syntax | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/why-logic-before-syntax",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Why We Teach Logic Before Syntax",
+      "initialMainCharacters": 3113,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/junior-cto-mindset",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/junior-cto-mindset",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "The Junior CTO Mindset: Raising Architects, Not Just Coders | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/junior-cto-mindset",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "The Junior CTO Mindset: Raising Architects, Not Just Coders",
+      "initialMainCharacters": 3192,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/student-builds-environmental-app",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/student-builds-environmental-app",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "12-Year-Old Builds App Adopted by Local Environmental Organization | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/student-builds-environmental-app",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "12-Year-Old Builds App Adopted by Local Environmental Organization",
+      "initialMainCharacters": 3047,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/evaluate-coding-programs-guide",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/evaluate-coding-programs-guide",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "How to Evaluate Coding Programs: 10 Questions That Reveal Quality | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/evaluate-coding-programs-guide",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "How to Evaluate Coding Programs: 10 Questions That Reveal Quality",
+      "initialMainCharacters": 2916,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/ai-and-the-future-of-kids-coding-careers",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/ai-and-the-future-of-kids-coding-careers",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "AI and the Future of Kids' Coding Careers: What Parents Need to Know in 2026 | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/ai-and-the-future-of-kids-coding-careers",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "AI and the Future of Kids' Coding Careers: What Parents Need to Know in 2026",
+      "initialMainCharacters": 3586,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/building-confident-girls-in-stem",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/building-confident-girls-in-stem",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Building Confident Girls in STEM: A Parent's Roadmap | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/building-confident-girls-in-stem",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Building Confident Girls in STEM: A Parent's Roadmap",
+      "initialMainCharacters": 2952,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/what-online-tutoring-should-look-like",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/what-online-tutoring-should-look-like",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "What Premium Online Tutoring Should Actually Look Like in 2026 | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/what-online-tutoring-should-look-like",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "What Premium Online Tutoring Should Actually Look Like in 2026",
+      "initialMainCharacters": 2801,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/ages-6-to-15-coding-roadmap",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/ages-6-to-15-coding-roadmap",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "The Complete Coding Roadmap for Kids Ages 6 to 15 | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/ages-6-to-15-coding-roadmap",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "The Complete Coding Roadmap for Kids Ages 6 to 15",
+      "initialMainCharacters": 3259,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/choose-online-tutor-parent-checklist",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/choose-online-tutor-parent-checklist",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "How to Choose an Online Tutor for Your Child: A Parent’s Evidence-Based Checklist | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/choose-online-tutor-parent-checklist",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "How to Choose an Online Tutor for Your Child: A Parent’s Evidence-Based Checklist",
+      "initialMainCharacters": 15073,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/coding-roadmap-kids-skill-not-age",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/coding-roadmap-kids-skill-not-age",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Coding Roadmap for Kids Ages 6–15: Choose by Skill, Not Just Age | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/coding-roadmap-kids-skill-not-age",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Coding Roadmap for Kids Ages 6–15: Choose by Skill, Not Just Age",
+      "initialMainCharacters": 16304,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/right-math-answer-without-understanding",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/right-math-answer-without-understanding",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Why a Child Can Get the Right Math Answer Without Understanding the Concept | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/right-math-answer-without-understanding",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Why a Child Can Get the Right Math Answer Without Understanding the Concept",
+      "initialMainCharacters": 11974,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/is-your-child-ready-for-python",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/is-your-child-ready-for-python",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Is Your Child Ready for Python? 12 Signs and a Simple Readiness Check | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/is-your-child-ready-for-python",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Is Your Child Ready for Python? 12 Signs and a Simple Readiness Check",
+      "initialMainCharacters": 10540,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/algebra-1-readiness-checklist",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/algebra-1-readiness-checklist",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Algebra 1 Readiness Checklist: Skills to Check Before the Course Begins | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/algebra-1-readiness-checklist",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Algebra 1 Readiness Checklist: Skills to Check Before the Course Begins",
+      "initialMainCharacters": 13081,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/blogs/ai-can-write-code-what-children-should-learn",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/ai-can-write-code-what-children-should-learn",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "AI Can Write Code—So What Should Children Learn Now? | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/blogs/ai-can-write-code-what-children-should-learn",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "AI Can Write Code—So What Should Children Learn Now?",
+      "initialMainCharacters": 13210,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/16",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/16",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Geometry | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/16",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Geometry",
+      "initialMainCharacters": 6405,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/17",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/17",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "REACT JS FOR KIDS | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/17",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "REACT JS FOR KIDS",
+      "initialMainCharacters": 2126,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/18",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/18",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Web Development | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/18",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Web Development",
+      "initialMainCharacters": 4847,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/20",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/20",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Algebra 1 | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/20",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Algebra 1",
+      "initialMainCharacters": 6291,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/21",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/21",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Introduction to Artificial Intelligence with Python | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/21",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Introduction to Artificial Intelligence with Python",
+      "initialMainCharacters": 5394,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/22",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/22",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Python Quest | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/22",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Python Quest",
+      "initialMainCharacters": 7599,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/23",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/23",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Algebra 2 | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/23",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Algebra 2",
+      "initialMainCharacters": 2416,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/24",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/24",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Precalculus | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/24",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Precalculus",
+      "initialMainCharacters": 7128,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/25",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/25",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Logic & Acumen | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/courses/25",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "h1": "Logic & Acumen",
+      "initialMainCharacters": 7745,
+      "sitemap": true,
+      "intendedIndexable": true
+    },
+    {
+      "path": "/courses/",
+      "status": 301,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/courses/",
+          "status": 301,
+          "location": "https://www.ritetutor.com/courses"
+        },
+        {
+          "url": "https://www.ritetutor.com/courses",
+          "status": 301,
+          "location": "https://www.ritetutor.com/courses/"
+        }
+      ],
+      "loop": true,
+      "title": "",
+      "initialMainCharacters": 0,
+      "sitemap": false,
+      "intendedIndexable": false
+    },
+    {
+      "path": "/blogs/",
+      "status": 301,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/blogs/",
+          "status": 301,
+          "location": "https://www.ritetutor.com/blogs"
+        },
+        {
+          "url": "https://www.ritetutor.com/blogs",
+          "status": 301,
+          "location": "https://www.ritetutor.com/blogs/"
+        }
+      ],
+      "loop": true,
+      "title": "",
+      "initialMainCharacters": 0,
+      "sitemap": false,
+      "intendedIndexable": false
+    },
+    {
+      "path": "/sign-in",
+      "status": 200,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/sign-in",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Rite Tutor | Online Tutoring, Coding, Math, AI & Academic Courses",
+      "canonical": "https://ritetutor.com/",
+      "robots": "index, follow",
+      "initialMainCharacters": 0,
+      "sitemap": false,
+      "intendedIndexable": false
+    },
+    {
+      "path": "/register",
+      "status": 404,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/register",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Page Not Found | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/404",
+      "robots": "noindex, follow",
+      "h1": "404",
+      "initialMainCharacters": 0,
+      "sitemap": false,
+      "intendedIndexable": false
+    },
+    {
+      "path": "/seo-nonexistent-20261026",
+      "status": 404,
+      "redirects": [
+        {
+          "url": "https://www.ritetutor.com/seo-nonexistent-20261026",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "loop": false,
+      "title": "Page Not Found | Rite Tutor",
+      "canonical": "https://www.ritetutor.com/404",
+      "robots": "noindex, follow",
+      "h1": "404",
+      "initialMainCharacters": 0,
+      "sitemap": false,
+      "intendedIndexable": false
+    }
+  ]
+}

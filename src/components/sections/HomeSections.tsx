@@ -3,7 +3,8 @@ import { ContactCTA } from '@/contexts/ContactModalContext';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle, Users, Brain, Lightbulb, Target, ChevronRight, BookOpen, Github, Award, BarChart3, Globe, Star, Phone, Quote } from 'lucide-react';
-import heroImage from '@/assets/hero-child-learning.jpg';
+import heroImage from '@/assets/hero-child-learning-960.webp';
+import heroMobileImage from '@/assets/hero-child-learning-480.webp';
 import mentorImage from '@/assets/mentor-teaching.jpg';
 import familyImage from '@/assets/family-learning.jpg';
 
@@ -52,7 +53,7 @@ export function HeroSection() {
               variants={fadeInUp}
               className="text-lg md:text-xl text-muted-foreground max-w-xl"
             >
-              One-to-one online tutoring across school subjects and grades, with math, coding, and AI for families in Bloomington, Indiana, the US, and worldwide.
+              Rite Tutor provides one-to-one online tutoring across school subjects and grades, with math, coding and AI for US and worldwide families. ritetutor.com is our official website.
             </motion.p>
             
             <motion.div 
@@ -102,7 +103,8 @@ export function HeroSection() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-premium-lg">
               <img 
-                src={heroImage} 
+                src={heroImage}
+                srcSet={`${heroMobileImage} 480w, ${heroImage} 960w`} sizes="(max-width: 767px) 100vw, 50vw"
                 fetchPriority="high"
                 width={1200}
                 height={900}
@@ -147,8 +149,8 @@ export function OpeningSection() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-lg text-muted-foreground">
-              Imagine your child not just writing code, but architecting solutions to real-world problems. Picture them explaining complex algorithms with confidence, building professional software portfolios, and earning university-level credentials all before graduating high school. This isn't fantasy. This is the Rite Tutor difference.
-            </p>
+Advanced learning can focus on deeper programming concepts, project planning, testing and explanation. Discuss prerequisites and suitable topics before selecting a pathway.
+</p>
             <p className="text-lg text-muted-foreground">
               We're not another coding camp selling entertainment disguised as education. We're not a crowded classroom where your child disappears into the background. We're a mentorship-driven educational revolution that rejects the broken approach plaguing traditional tutoring worldwide.
             </p>
@@ -198,8 +200,8 @@ export function WhyFamiliesChooseSection() {
               Whether you live in the United States, Canada, United Kingdom, Australia, Singapore, or anywhere globally, you've probably noticed the same frustrating pattern: traditional tutoring centers force your child into rigid grade-based curricula. A gifted fourth-grader capable of tenth-grade logic sits through elementary lessons. A struggling high schooler gets pushed through advanced material before mastering fundamentals.
             </p>
             <p>
-              We reject this entirely. At Rite Tutor, skill determines placement—not age, not grade level, not arbitrary assessments. Our one-to-one online tutoring model means your child receives 100% of their mentor's attention, every single session. No crowded virtual classrooms. No competing for teacher time. No watered-down curriculum designed for the lowest common denominator.
-            </p>
+School tutoring can follow the student’s curriculum while adapting the pace to readiness. Coding enrichment starts from current understanding and interests. One-to-one online lessons provide space for questions and individual practice.
+</p>
             <p>
               Our mentors are vetted experts who've mastered the art of translating complex computer science concepts into accessible, engaging lessons. They don't just teach Python or JavaScript—they teach proportional reasoning, algorithmic thinking, and systematic problem decomposition. These are the transferable skills that will serve your child whether they're debugging code, conducting scientific research, or managing a business team.
             </p>
@@ -369,7 +371,7 @@ export function TechStackSection() {
     {
       icon: Award,
       title: "University-Level Coursework",
-      description: "Preparing middle and high schoolers to earn college credits and professional certifications through top-tier university computer science courses and industry-recognized credential programs."
+      description: "Practical projects give students opportunities to explain their thinking, test ideas and reflect on what to improve. Discuss appropriate goals and a suitable starting point during a consultation."
     }
   ];
 
@@ -417,19 +419,19 @@ export function TechStackSection() {
 export function RealResultsSection() {
   const results = [
     {
-      description: "A 12-year-old who built a functional park cleanup tracker for their local conservation efforts"
+      description: "Practice planning and building a small project around a clearly defined question."
     },
     {
-      description: "A 14-year-old who earned a university computer science certificate and is now taking advanced-level courses"
+      description: "Explain how a program works and what to try when it produces an unexpected result."
     },
     {
-      description: "A 10-year-old who progressed from basic visual logic to writing Python algorithms in eight months"
+      description: "Connect logic exercises to Python programming at an appropriate starting level."
     },
     {
-      description: "A 15-year-old who landed a paid internship because of their professional development portfolio"
+      description: "Practice presenting a project and explaining design choices."
     },
     {
-      description: "A 13-year-old who completed multiple university-level computer science courses before high school graduation"
+      description: "Review previous work and identify a useful next step."
     }
   ];
 
@@ -443,7 +445,7 @@ export function RealResultsSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-            Real Results: What Success{' '}
+            Learning Goals: What Progress{' '}
             <span className="text-primary">Actually Looks Like</span>
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -475,8 +477,8 @@ export function RealResultsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          These aren't isolated success stories—they're the expected outcome when you combine personalized mentorship, rigorous curriculum, and a student's natural curiosity.
-        </motion.p>
+These are examples of learning goals, not verified student outcomes. Progress depends on the starting point, practice and learning needs.
+</motion.p>
         
         <motion.div 
           className="text-center mt-8"
@@ -486,7 +488,7 @@ export function RealResultsSection() {
         >
           <Button variant="hero" size="lg" asChild>
             <Link to="/blogs" className="group">
-              See Student Success Stories
+              Read Parent Guides
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
@@ -541,7 +543,9 @@ export function TestimonialsSection() {
               <Star key={i} className="w-6 h-6 text-primary fill-primary" />
             ))}
           </div>
-          <p className="text-muted-foreground">4.9/5 rating from 127+ families worldwide</p>
+          <p className="text-muted-foreground">
+Discuss your family’s learning needs with Rite Tutor.
+</p>
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -597,10 +601,10 @@ export function InvestmentSection() {
               We don't advertise prices on our website for a simple reason: Quality education isn't a commodity to be comparison-shopped like groceries. Every child's starting point, learning pace, and educational goals differ dramatically.
             </p>
             <p>
-              What we can tell you: Families invest in Rite Tutor because they understand that developing deep logical thinking capabilities—the kind that lead to top-tier university programs, lucrative careers, and lifelong problem-solving skills—delivers exponential returns. The money saved on future college tuition through earned credits, the earning potential from early professional certifications, and the competitive advantage in an AI-dominated economy make this education an investment, not an expense.
-            </p>
+Practical projects give students opportunities to explain their thinking, test ideas and reflect on what to improve. Discuss appropriate goals and a suitable starting point during a consultation.
+</p>
             <p>
-              During your free strategy call, we'll discuss your child's current abilities, educational objectives, and create a customized learning pathway with transparent pricing based on session frequency and curriculum intensity. No surprises. No pressure. Just honest conversation about transforming potential into excellence.
+              During your free strategy call, we'll discuss your child's current abilities, educational objectives, and create a customized learning pathway with lesson arrangements based on learning needs. No surprises. No pressure. Just honest conversation about transforming potential into excellence.
             </p>
           </div>
         </motion.div>

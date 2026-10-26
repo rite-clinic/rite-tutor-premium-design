@@ -1,3 +1,5 @@
+import { courseGuidance } from '@/lib/courseContent';
+import { CourseParentGuide } from '@/components/courses/CourseParentGuide';
 import { useEffect, useState } from "react";
 import { GatedDownload } from "@/components/GatedDownload";
 import { Link, useParams } from "react-router-dom";
@@ -109,9 +111,9 @@ const CourseDetails = () => {
 
   const descriptionBlocks = normalizeDescription(course?.description);
 
-  const subcourses = (course?.subcourses || []).filter(Boolean);
+  const subcourses = (course?.subcourses || []).filter(item => item.active === true);
 
-  const title = course?.title?.trim() || "Course";
+  const title = course ? courseGuidance(course).heading : "Course";
 
   return (
     <>
@@ -120,7 +122,7 @@ const CourseDetails = () => {
       ========================== */}
       <Seo
         title={`${isLoading ? "Online Course" : error?.notFound ? "Course Not Available" : title} | Rite Tutor`}
-        description={course ? `${course.title}. ${course.subtitle || course.intro || ""} One-to-one online learning with Rite Tutor. Discuss lesson options and book a free strategy call.` : "Explore one-to-one online courses with Rite Tutor. Discuss your child's subject, grade, and learning goals."}
+        description={course ? `${title} with Rite Tutor. Explore course topics, starting levels and learning activities. Request a free consultation for your child.` : "Explore one-to-one online courses with Rite Tutor. Discuss your child's subject, grade, and learning goals."}
         path={`/courses/${courseId}`}
         image={course?.image || "/og-image.png"}
         imageAlt={title}
@@ -700,6 +702,8 @@ const CourseDetails = () => {
                 </div>
               </div>
             </section>
+            <CourseParentGuide course={course} />
+
 
             {/* =====================================================
                 FINAL CTA

@@ -11,7 +11,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "check:types": "tsc --noEmit -p tsconfig.app.json",
+    "check:http": "node scripts/check-http.mjs",
+    "check:browser": "node scripts/check-browser.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

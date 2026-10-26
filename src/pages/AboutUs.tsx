@@ -35,7 +35,7 @@ const AboutUs = () => {
     {
       icon: Award,
       title: "University & Professional Pathways",
-      description: "Our ultimate objective isn't teaching kids to code—it's preparing them to earn university-level credentials while still in middle or high school through strategic integration with top-tier online education platforms."
+      description: "Advanced learning can focus on deeper programming concepts, project planning, testing and explanation. Discuss prerequisites and suitable topics before selecting a pathway."
     }
   ];
 
@@ -67,11 +67,11 @@ const AboutUs = () => {
                   Rite Tutor didn't emerge from a vacuum. It was born from years of witnessing a devastating pattern: Talented children trapped in educational systems that prioritize compliance over curiosity, memorization over mastery, and standardized testing over genuine understanding.
                 </p>
                 <p className="text-lg text-muted-foreground">
-                  Our founder spent over a decade in traditional education—from classroom teaching to curriculum development at established tutoring centers globally. What he observed was heartbreaking: Fourth-graders capable of complex logical reasoning forced to complete elementary worksheets because "that's the grade-level curriculum." High schoolers pushed through advanced programming syntax without understanding foundational algorithmic thinking. Parents investing thousands in coding camps that delivered entertainment disguised as education.
-                </p>
+Rite Tutor provides one-to-one online tutoring. Our approach starts with the learner’s current understanding, interests and school requirements.
+</p>
                 <p className="text-lg text-muted-foreground">
-                  The breaking point came when a gifted 11-year-old—a child who could visualize data structures in his head and explain complex algorithms to adults—was told he couldn't advance in his coding class until his entire age cohort caught up. Not because he lacked ability. Not because he hadn't mastered the material. But because the system valued uniformity over excellence.
-                </p>
+Students can need different kinds of support at the same age. Our approach makes room to revisit foundations or explore a topic more deeply.
+</p>
                 <p className="text-lg text-muted-foreground">
                   That's when everything changed. Rite Tutor was created to answer one radical question: What if we designed education around the student's demonstrated skill level instead of arbitrary age brackets?
                 </p>
@@ -96,8 +96,8 @@ const AboutUs = () => {
                   Traditional tutoring centers worldwide operate from a fundamentally flawed assumption: that chronological age equals learning capacity. This industrial-age model might have made sense when education needed to process large volumes of students efficiently. It makes zero sense in an era where personalized learning is not only possible but essential.
                 </p>
                 <p>
-                  At Rite Tutor, we reject grade-based curricula entirely. A nine-year-old who demonstrates mastery of proportional reasoning will learn Python data structures. A fifteen-year-old who needs foundational work in algorithmic thinking will build that base before touching advanced frameworks. We meet every child exactly where they are—not where a standardized curriculum says they should be.
-                </p>
+School tutoring can follow the student’s curriculum while adapting the pace to readiness. Coding enrichment starts from current understanding and interests. One-to-one online lessons provide space for questions and individual practice.
+</p>
                 <p>
                   This isn't just philosophically sound—it's neuroscientifically validated. Research in cognitive development consistently shows that children develop logical reasoning capabilities at vastly different rates. Forcing them into rigid age brackets creates two catastrophic outcomes: gifted students become bored and disengaged, while struggling learners develop learned helplessness and anxiety.
                 </p>
@@ -231,11 +231,11 @@ const AboutUs = () => {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground">
                 <p>
-                  Here's our controversial take: College should be a strategic choice, not a financial necessity. When students earn university certifications, professional credentials, and college credits before graduating high school, they enter university with leverage. They can challenge courses, graduate early, pursue advanced research opportunities, or even skip traditional college entirely in favor of direct career entry.
-                </p>
+Practical projects give students opportunities to explain their thinking, test ideas and reflect on what to improve. Discuss appropriate goals and a suitable starting point during a consultation.
+</p>
                 <p>
-                  This isn't anti-education—it's pro-empowerment. Students who develop genuine mastery early have options. The Rite Tutor pathway creates optionality. Students who want traditional university experiences pursue them from positions of strength—with scholarships, advanced placement, and demonstrated excellence. Students who prefer alternative routes have the skills and credentials to succeed independently.
-                </p>
+Practical projects give students opportunities to explain their thinking, test ideas and reflect on what to improve. Discuss appropriate goals and a suitable starting point during a consultation.
+</p>
               </div>
             </motion.div>
           </div>

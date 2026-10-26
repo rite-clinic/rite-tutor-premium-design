@@ -11,7 +11,7 @@ const navigation = [
   { name: 'Courses', href: '/courses' },
   { name: 'Services', href: '/services' },
   { name: 'Projects', href: '/projects' },
-  { name: 'Pricing', href: '/pricing' },
+  { name: 'Learning Plans', href: '/learning-plans' },
   { name: 'Learning Pathways', href: '/learning-pathways' },
   { name: 'How It Works', href: '/how-it-works' },
   { name: 'Blog', href: '/blogs' },
@@ -92,8 +92,8 @@ export function Header() {
                 <button className="px-3 py-2 text-sm font-medium rounded-lg text-foreground/80 hover:text-foreground hover:bg-muted transition-all duration-200">
                   More
                 </button>
-                <div className="absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-premium-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  {navigation.slice(7).map((item) => (
+                <div className="absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-premium-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:visible group-focus-within:opacity-100 transition-all duration-200">
+                  {navigation.slice(6).map((item) => (
                     <Link
                       key={item.name}
                       to={item.href}
@@ -123,6 +123,10 @@ export function Header() {
             {/* Mobile menu button */}
             <button
               className="xl:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+              aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
+              onKeyDown={(event) => { if (event.key === "Escape") setIsMobileMenuOpen(false); }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
@@ -142,7 +146,9 @@ export function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="xl:hidden border-t border-border bg-card"
+              id="mobile-navigation"
+              onKeyDown={(event) => { if (event.key === "Escape") setIsMobileMenuOpen(false); }}
+              className="xl:hidden border-t border-border bg-card max-h-[75vh] overflow-y-auto"
             >
               <div className="container-wide py-4 space-y-1">
                 {navigation.map((item) => (
@@ -163,12 +169,12 @@ export function Header() {
                   <a href="tel:+19294218055" className="flex items-center justify-center gap-2 text-sm font-medium text-foreground/80 hover:text-primary py-2">
                     <Phone className="w-4 h-4" /> +1 (929) 421-8055
                   </a>
-                  <Link
-                    to="/sign-in"
+                  <a
+                    href="https://ritetutor.com/sign-in"
                     className="flex h-12 w-full items-center justify-center rounded-lg bg-foreground px-6 text-base font-semibold text-background shadow-premium transition-all duration-300 hover:bg-foreground/90 hover:shadow-premium-lg"
                   >
                     Login / Registration
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>

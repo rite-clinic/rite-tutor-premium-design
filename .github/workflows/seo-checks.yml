@@ -1,0 +1,21 @@
+name: SEO and application checks
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit -p tsconfig.app.json
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - run: npm run check:seo
+      - run: sudo apt-get update && sudo apt-get install -y apache2 openssl
+      - run: bash scripts/test-apache.sh

@@ -277,7 +277,7 @@ export const septemberBlogPosts: BlogPost[] = [
     ],
     "download": {
       "title": "Coding Readiness Checklist",
-      "description": "Observe your child?s current skills, explore four learning stages, and plan a starting project.",
+      "description": "Observe your child’s current skills, explore four learning stages, and plan a starting project.",
       "href": "/downloads/coding-readiness-checklist.pdf"
     }
   },
@@ -380,7 +380,7 @@ export const septemberBlogPosts: BlogPost[] = [
     ],
     "download": {
       "title": "Five-Question Math Understanding Check",
-      "description": "Use five conversation prompts to explore your child?s reasoning and record what to revisit.",
+      "description": "Use five conversation prompts to explore your child’s reasoning and record what to revisit.",
       "href": "/downloads/five-question-math-understanding-check.pdf"
     }
   },

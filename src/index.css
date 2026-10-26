@@ -344,7 +344,19 @@
 }
 
 /* Keep pre-rendered content visible while JavaScript loads, or when it is disabled. */
-html[data-prerendered] #root [style*="opacity:0"] {
+html[data-prerendered] #root main [style*="opacity"] {
   opacity: 1 !important;
   transform: none !important;
+}
+
+/* Keep the yellow brand accent, with readable heading contrast on light surfaces. */
+main h1 .text-primary,
+main h2 .text-primary,
+main h3 .text-primary {
+  color: hsl(42 100% 25%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  #root main [style*="opacity"] { opacity: 1 !important; transform: none !important; }
 }

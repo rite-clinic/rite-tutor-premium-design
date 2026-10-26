@@ -184,7 +184,7 @@ const HowItWorks = () => {
                   "Live-deployed websites and applications",
                   "Demo videos explaining technical decisions",
                   "Rite Tutor certifications documenting mastered skills",
-                  "For advanced students: university credentials and professional certifications"
+                  "Explore advanced topics and project practice"
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3 bg-card p-4 rounded-xl border border-border">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -256,7 +256,9 @@ const HowItWorks = () => {
                   </div>
                   <div className="bg-card p-6 rounded-2xl border border-border">
                     <h4 className="font-bold mb-2">Advanced Students (Ages 12-15)</h4>
-                    <p className="text-sm">Pursue professional-level certifications, college credits, and sophisticated full-stack development.</p>
+                    <p className="text-sm">
+Practical projects give students opportunities to explain their thinking, test ideas and reflect on what to improve. Discuss appropriate goals and a suitable starting point during a consultation.
+</p>
                   </div>
                 </div>
               </div>

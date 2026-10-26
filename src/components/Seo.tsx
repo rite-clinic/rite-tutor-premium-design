@@ -39,10 +39,11 @@ export function Seo({ title, description, path, image = "/og-image.png", imageAl
   );
 }
 
-export function SiteSeo() {
+export function SiteSeo({ forceNoindex = false }: { forceNoindex?: boolean }) {
   const { pathname } = useLocation();
   const { courses = [] } = usePrerenderData();
   const path = pathname.replace(/\/$/, "") || "/";
+  if (forceNoindex) return <Seo title="Page Not Found | Rite Tutor" description="Find online tutoring, courses, and parent resources at Rite Tutor." path={path} noindex />;
   if (/^\/courses\/[^/]+$/.test(path)) return null;
   if (path.startsWith("/thank-you")) return <Seo title="Thank You | Rite Tutor" description="Thank you for contacting Rite Tutor." path="/contact" noindex />;
   const post = path.startsWith("/blogs/") ? getPostBySlug(path.slice(7)) : undefined;

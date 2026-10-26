@@ -1,9 +1,7 @@
 name: Deploy to EC2
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -16,14 +14,27 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
           cache: npm
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Check application
+        run: |
+          npx tsc --noEmit -p tsconfig.app.json
+          npm run lint
+          npm test
 
       - name: Build Project
         run: npm run build
+
+      - name: Validate public HTML and Apache routing
+        run: |
+          npm run check:seo
+          sudo apt-get update
+          sudo apt-get install -y apache2 openssl
+          bash scripts/test-apache.sh
 
       - name: Setup SSH
         run: |

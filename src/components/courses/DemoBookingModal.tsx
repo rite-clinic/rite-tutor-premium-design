@@ -33,7 +33,7 @@ import {
   groupSlotsByDate,
   shouldShowUserTime,
   slotTimezone,
-  teacherName,
+
   userTimezone,
   type SlotGroup,
 } from "@/lib/courseUtils";
@@ -204,7 +204,7 @@ export function DemoBookingModal({ course, open, onOpenChange }: Props) {
       <DialogContent className="max-h-[92vh] w-[calc(100vw-2rem)] max-w-2xl overflow-y-auto sm:w-full">
         <DialogHeader>
           <DialogTitle className="font-display text-2xl">
-            {step === "success" ? "Your Free Demo Is Confirmed" : "Book a Free Demo Class"}
+            {step === "success" ? "Demo Request Received" : "Book a Free Demo Class"}
           </DialogTitle>
           <DialogDescription>
             {step === "slots" && `Pick a time that works for ${course.title || "this course"}.`}
@@ -297,7 +297,7 @@ export function DemoBookingModal({ course, open, onOpenChange }: Props) {
                         )}
                       </p>
                       <p className="mt-2 flex items-center gap-2 text-sm">
-                        <User className="h-3.5 w-3.5 text-primary" /> {teacherName(slot)}
+                        <User className="h-3.5 w-3.5 text-primary" /> Online lesson
                       </p>
                     </button>
                   ))}
@@ -320,7 +320,7 @@ export function DemoBookingModal({ course, open, onOpenChange }: Props) {
               <p className="font-semibold">{formatSlotRange(selectedSlot)}</p>
               <p className="text-muted-foreground">
                 {groups.find((g) => g.date === selectedSlot.date)?.label || selectedSlot.date} ·{" "}
-                {teacherName(selectedSlot)}
+                Rite Tutor
               </p>
               {shouldShowUserTime(selectedSlot) && (
                 <p className="text-muted-foreground">
@@ -485,7 +485,7 @@ export function DemoBookingModal({ course, open, onOpenChange }: Props) {
               )}
               <p>
                 <span className="text-muted-foreground">Mentor: </span>
-                {teacherName(selectedSlot)}
+                Rite Tutor
               </p>
               <p>
                 <span className="text-muted-foreground">Student: </span>

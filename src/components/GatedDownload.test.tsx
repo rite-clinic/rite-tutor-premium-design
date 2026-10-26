@@ -5,7 +5,7 @@ import axios from "axios";
 import { GatedDownload } from "./GatedDownload";
 import { ContactCTA, ContactModalProvider } from "@/contexts/ContactModalContext";
 
-vi.mock("axios", () => ({ default: { post: vi.fn() } }));
+vi.mock("axios", () => ({ default: { post: vi.fn(), isAxiosError: vi.fn(() => false) } }));
 
 function Location() {
   return <output data-testid="location">{useLocation().pathname}</output>;
@@ -46,6 +46,8 @@ describe("gated downloads", () => {
     expect(opened).toHaveLength(0);
     fillForm();
     fireEvent.click(screen.getByRole("button", { name: "Book Your Free Strategy Call" }));
+    fireEvent.submit(screen.getByRole("button", { name: /Submitting/ }).closest("form")!);
+    expect(axios.post).toHaveBeenCalledTimes(1);
     expect(opened).toHaveLength(0);
     resolve({ data: {} });
     await screen.findByText("Thank you! Your file is ready");

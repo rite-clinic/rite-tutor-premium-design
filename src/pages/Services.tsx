@@ -77,18 +77,18 @@ const foundationalServices = [
 const certifications = [
   {
     icon: GraduationCap,
-    title: "Harvard CS50: Introduction to Computer Science",
-    description: "Harvard's legendary introductory course, accessible to advanced Rite Tutor students. We serve as stepping-stone guides, helping students navigate challenging problem sets. Students who complete CS50 earn verified certificates from Harvard University."
+    title: "Further Learning Topics",
+    description: "Discuss appropriate further learning resources and prerequisites with the team. No affiliation or external credential is included in the tutoring offer."
   },
   {
     icon: Award,
-    title: "IBM Professional Certificates: Data Science & AI",
+    title: "Further Learning Topics",
     description: "Industry-recognized credentials demonstrating professional-level capability in data analysis, machine learning, and artificial intelligence. These programs prepare students for actual career entry."
   },
   {
     icon: BookOpen,
-    title: "MIT OpenCourseWare: Advanced Topics",
-    description: "For exceptional students ready for university-level challenges, we provide guided access to MIT's open course materials. Topics include advanced algorithms, systems engineering, and artificial intelligence research."
+    title: "Further Learning Topics",
+    description: "Discuss appropriate further learning resources and prerequisites with the team. No affiliation or external credential is included in the tutoring offer."
   }
 ];
 

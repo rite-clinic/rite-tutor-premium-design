@@ -10,30 +10,30 @@ const studentProjects = [
   {
     icon: Globe,
     title: "The Monroe County Cleanup Tracker",
-    location: "Bloomington",
-    age: "12-year-old",
-    description: "A student noticed that local park cleanup efforts lacked coordination. Different volunteer groups duplicated work while other areas remained neglected. She built a web application that maps cleanup locations, tracks volunteer availability, and coordinates efforts efficiently. The Monroe County Parks Department now uses her application. This project demonstrated not just coding ability but civic engagement, systems thinking, and genuine impact."
+    location: "Online learning",
+    age: "Illustrative activity",
+    description: "Illustrative project: design a simple page that organizes fictional cleanup tasks and locations. Practice structuring information and explaining design decisions. This is not a report of a student outcome or an affiliation."
   },
   {
     icon: Calendar,
     title: "The Academic Traffic Light System",
-    location: "Bedford",
-    age: "14-year-old",
-    description: "A student struggled with homework organization across seven classes. He created a personal dashboard using color-coded priority indicators—green for completed, yellow for approaching deadlines, red for urgent tasks. The system integrates with his school calendar and sends automated reminders. His grades improved dramatically. More importantly, he demonstrated the ability to identify personal challenges and engineer technical solutions."
+    location: "Online learning",
+    age: "Illustrative activity",
+    description: "Illustrative project: build a task list using fictional assignments and color-coded states. Practice updating data and explaining how the interface changes."
   },
   {
     icon: Heart,
-    title: "The Mental Wellness Companion",
-    location: "Martinsville",
-    age: "15-year-old",
-    description: "A student noticed increasing stress among peers. She built a rule-based chatbot that suggests evidence-based coping strategies—breathing exercises, mindfulness techniques, journal prompts—based on user-reported stress levels. Her project combined technical skill with emotional intelligence and genuine care for community wellbeing."
+    title: "The Interactive Quiz",
+    location: "Online learning",
+    age: "Illustrative activity",
+    description: "Illustrative project: build a rule-based quiz that selects a response from a fixed set of options. Practice conditional logic without collecting personal or health information."
   },
   {
     icon: MapPin,
     title: "The Local Business Directory",
-    location: "Ellettsville",
-    age: "13-year-old",
-    description: "A student observed that small local businesses struggled with online presence. He created a searchable directory with integrated Google Maps, business hours, contact information, and customer reviews. Local chambers of commerce expressed interest in scaling the project. This demonstrated market research, user experience design, database management, and entrepreneurial thinking."
+    location: "Online learning",
+    age: "Illustrative activity",
+    description: "Illustrative project: create a directory of fictional businesses. Practice organizing entries and building a simple search interaction without claiming adoption by any organization."
   }
 ];
 
@@ -47,7 +47,7 @@ const transferableSkills = [
 const scholarshipAdvantages = [
   "Concrete evidence of solving community problems through technology",
   "Professional GitHub portfolios demonstrating sustained effort over years",
-  "University-verified credentials from Harvard CS50, IBM, or MIT programs",
+  "Further Learning Topics",
   "Demo Day videos articulating complex technical decisions clearly",
   "Essay material featuring specific challenges overcome and genuine growth narratives"
 ];
@@ -66,7 +66,7 @@ const Projects = () => {
                 <span className="text-primary">Build Solutions That Matter</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                Real Students. Real Projects. Real Impact in Bloomington and Beyond.
+                Illustrative project ideas, not verified student outcomes.
               </p>
             </motion.div>
           </div>
@@ -188,12 +188,13 @@ const Projects = () => {
           <div className="container-wide">
             <motion.div className="max-w-4xl mx-auto" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                The Scholarship Advantage:{' '}
-                <span className="text-primary">Standing Out in Competitive Applications</span>
+Build and explain practical projects
+{' '}
+                <span className="text-primary">Explaining Your Work</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Thousands of students apply for competitive scholarships with similar GPAs, identical standardized test scores, and indistinguishable extracurricular activities. A Rite Tutor student's application includes:
-              </p>
+Practical projects give students opportunities to explain their thinking, test ideas and reflect on what to improve. Discuss appropriate goals and a suitable starting point during a consultation.
+</p>
               <div className="space-y-3">
                 {scholarshipAdvantages.map((item, index) => (
                   <div key={index} className="flex items-start gap-3 bg-background p-4 rounded-xl border border-border">

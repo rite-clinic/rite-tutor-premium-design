@@ -16,4 +16,10 @@ describe("lead measurement", () => {
     expect(JSON.stringify(analyticsWindow.dataLayer)).not.toContain("PRIVATE123");
     expect(analyticsWindow.dataLayer?.[0].page_path).toBe("/thank-you");
   });
+  it("drops query parameters, unknown private paths and unexpected caller fields", () => {
+    window.history.replaceState({}, "", "/account/parent@example.com?email=private@example.com");
+    const details = { contact_method: "email" as const, email: "private@example.com", child_name: "Private Child" };
+    trackMarketingEvent("contact_click", details);
+    expect(analyticsWindow.dataLayer).toEqual([{ event: "contact_click", page_path: "/utility", contact_method: "email" }]);
+  });
 });

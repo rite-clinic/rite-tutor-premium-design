@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { SiteSeo } from "@/components/Seo";
 import { MarketingMeasurement } from "@/components/MarketingMeasurement";
 import { PrerenderContext, type PrerenderData } from "@/contexts/PrerenderContext";
@@ -20,14 +20,16 @@ const queryClient = new QueryClient();
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    const timer = window.setTimeout(() => document.documentElement.removeAttribute("data-prerendered"), 1200);
-    return () => window.clearTimeout(timer);
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [pathname]);
   return null;
 };
 
-export const AppContent = ({ data = {} }: { data?: PrerenderData }) => (
+export const AppContent = ({ data = {} }: { data?: PrerenderData }) => {
+  const { pathname } = useLocation();
+  const initialPath = useRef(pathname);
+  const notFound = !!data.notFound && pathname === initialPath.current;
+  return (
   <PrerenderContext.Provider value={data}>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -36,10 +38,10 @@ export const AppContent = ({ data = {} }: { data?: PrerenderData }) => (
           <ContactModalProvider>
             <StickyStrategyCTA />
             <ScrollToTop />
-            <SiteSeo />
+            <SiteSeo forceNoindex={notFound} />
             <MarketingMeasurement />
             <Suspense fallback={<main className="container-wide py-20" aria-busy="true">Loading page?</main>}>
-            <Routes>
+            {notFound ? <NotFound /> : <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
@@ -47,7 +49,8 @@ export const AppContent = ({ data = {} }: { data?: PrerenderData }) => (
               <Route path="/courses" element={<Courses />} />
               <Route path="/courses/:courseId" element={<CourseDetails />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/pricing" element={<Navigate to="/learning-plans" replace />} />
+              <Route path="/learning-plans" element={<Pricing />} />
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blogs" element={<Blog />} />
@@ -60,13 +63,14 @@ export const AppContent = ({ data = {} }: { data?: PrerenderData }) => (
               <Route path="/thank-you" element={<Navigate to="/" replace />} />
               <Route path="/thank-you/:token" element={<ThankYou />} />
               <Route path="*" element={<NotFound />} />
-            </Routes>
+            </Routes>}
             </Suspense>
           </ContactModalProvider>
       </TooltipProvider>
     </QueryClientProvider>
   </PrerenderContext.Provider>
 );
+};
 
 const App = ({ data }: { data?: PrerenderData }) => (
   <HelmetProvider><BrowserRouter><AppContent data={data} /></BrowserRouter></HelmetProvider>

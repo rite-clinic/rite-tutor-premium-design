@@ -147,24 +147,19 @@ export function isSlotBookable(slot: ScheduleSlot): boolean {
 
 /* --------------------------------- Service -------------------------------- */
 
+// The build publishes an allowlisted catalog without pricing or individual tutor data.
+// Content changes require a fresh build and deployment of HTML + catalog + sitemap.
 export async function getCourses(): Promise<Course[]> {
-  const data = await request<unknown>("/courses-list/");
-  const list = Array.isArray(data)
-    ? data
-    : Array.isArray((data as { data?: Course[] })?.data)
-      ? (data as { data: Course[] }).data
-      : [];
-  return (list as Course[]).filter(isCoursePublic);
+  const response = await fetch('/public-courses.json');
+  if (!response.ok) throw new ApiError('Unable to load the course catalog. Please try again.', response.status);
+  const data: unknown = await response.json();
+  if (!Array.isArray(data)) throw new ApiError('Invalid course catalog.', 503);
+  return (data as Course[]).filter(isCoursePublic);
 }
 
 export async function getCourse(courseId: string | number): Promise<Course> {
-  const data = await request<Course | { data: Course }>(
-    `/courses/${encodeURIComponent(String(courseId))}/`,
-  );
-  const course = (data as { data?: Course })?.data ?? (data as Course);
-  if (!course || typeof course !== "object" || !("id" in course)) {
-    throw new ApiError("Course not found.", 404);
-  }
+  const course = (await getCourses()).find(item => String(item.id) === String(courseId));
+  if (!course) throw new ApiError('Course not found.', 404);
   return course;
 }
 

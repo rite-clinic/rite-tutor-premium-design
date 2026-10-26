@@ -1,92 +1,86 @@
-# Rite Tutor: SEO implementation and launch
+﻿# Rite Tutor SEO implementation handoff — 26 October 2026
 
-## What this release changes
+This is a local, reviewable implementation. Nothing was deployed, no DNS or external profile was changed, and no production enquiry was submitted.
 
-- Generates complete HTML for the homepage, public information pages, all 18 articles, two new tutoring pages, and every verified, published course. The current catalog produces **39 indexable URLs**.
-- Gives each URL its own title, description, canonical URL, Open Graph tags, Twitter card, and structured data. Organization, website, article, course, service, and breadcrumb markup describe real page content.
-- Uses the consistent brand names **Rite Tutor** and **RiteTutor**, and the canonical origin `https://www.ritetutor.com`.
-- Adds an all-subjects/grades page and one substantial Bloomington/Indiana page. Both explain that lessons are **online only**. Nearby towns are service audiences, not claimed office locations.
-- Generates `sitemap.xml` and includes it in `robots.txt`. No invented update dates, ratings, office addresses, or social account identities are included.
-- Adds Apache rules for extensionless pages, legacy `/blog` redirects, and genuine 404 responses. Confirmation URLs stay outside the sitemap and carry noindex metadata.
-- Splits browser code by page, fixes font loading, and replaces 17 blog PNGs with WebP images: approximately **22.7 MB down to 1.84 MB**, preserving their dimensions.
-- Adds GTM data-layer events for successful leads, phone/email clicks, and PDF downloads. These custom events contain labels and course IDs, not parent/child contact details or confirmation tokens.
+**Owner-requested correction:** The original marketing page layouts, homepage sections and most copy have been restored. Changes are now targeted to public pricing, unsupported outcome/credential claims and curriculum contradictions. Unverified homepage testimonials remain withheld. The earlier replacement-page approach below is superseded by this restoration. The Vite development server now serves `/public-courses.json` from the live catalog using the same allowlist as the production build; it no longer requires a production build to display courses. Verified HTTP 200 with nine published courses and browser navigation from the mobile course listing to Python details. All 14 tests, application/configuration TypeScript checks, production build and 39-page SEO checks pass.
 
-## Build and maintenance
+## Verified baseline and architectural decisions
+
+- Repository was clean at start; no AGENTS.md was found. React 18.3.1, React Router 6.30.1, Vite 5.4.19, TypeScript 5.8.3 and Vitest 3.2.4 were verified from installed packages. Existing SSR-at-build-time uses React renderToString and Helmet; this is not a blank SPA and no framework migration was made.
+- The deployment workflow targets EC2/Apache; live responses identify Apache 2.4.58 Ubuntu. No CDN configuration or server vhost files are in this repository. Local Apache/Docker/WSL is unavailable. Apache CI verification is supplied, not claimed to have run here.
+- Live `/courses` and `/blogs` redirect to slash forms, which redirect back. Generated pages coexist with same-named directories. Explicit known-route-to-file mappings replace conditional directory resolution, so mod_dir does not need to choose the page. No global DirectorySlash Off or blanket SPA fallback was added.
+- Both HTTPS homepage hosts return 200. HTTP non-www returns 302. Existing public HTML/sitemap prefer www, so retain `https://www.ritetutor.com`, extensionless paths without trailing slash, root `/`. No Search Console evidence was available to justify a hostname migration.
+- `/sign-in` is handled by a separate deployed application and currently serves indexable initial HTML with a homepage canonical. This repo does not contain its authentication/dashboard/billing implementation. The mobile login now uses a full navigation anchor like desktop, rather than the React router's unknown route.
+- A nonexistent live URL returns 404/noindex. Preserve that behavior. Deleted courses/articles disappear from a clean rebuild and sitemap; unknown paths remain 404. No unrelated homepage redirects.
+
+Full route inventory: [route-baseline.md](docs/seo/route-baseline.md); raw chains: [live-baseline.json](output/seo/live-baseline.json). All 39 sitemap pages, nine courses, 18 articles, auth samples and unknown URLs were sampled. [Search strategy](docs/seo/search-strategy.md) records the provisional US keyword map, sources, confidence and editorial backlog.
+
+## Implemented locally
+
+- Generated Apache rules map each published URL explicitly, consolidate public host/path variants permanently, redirect Pricing to Learning Plans and preserve legacy blog aliases. API/auth/application paths bypass frontend page rules. Compression and caching distinguish hashed assets from mutable HTML. Public rules cannot override a parent vhost redirect; integration work below remains required.
+- Fresh catalog fetch remains mandatory; failed, malformed, duplicate-ID or empty catalog stops the build. Builds generate complete initial HTML, sitemap and an allowlisted public JSON catalog from the same snapshot. Tutor names, author objects and charges are absent from the generated payload/catalog. Inactive submodules are excluded. Browser course views use that same catalog, avoiding a raw pricing/tutor payload on marketing pages.
+- Every published course is discovered automatically. Articles are discovered from blogPosts. Rebuild on add/edit/unpublish/delete, atomically deploy HTML/catalog/sitemap together, remove obsolete files only inside the marketing dist directory, then invalidate mutable caches. No fabricated lastmod values. A stale `SEO_COURSES_FILE` fixture is for controlled tests only, never production.
+- Central brand configuration at `src/data/brand.json`; consistent WebSite/EducationalOrganization IDs. Removed unverified alternateName. No guessed social profiles, offers, ratings or tutor entities. `jsonLd` escapes `<` to prevent script termination.
+- Homepage identifies Rite Tutor, its official website and one-to-one online service. School tutoring and coding/AI have separate visible paths. About, Services, How It Works, Pathways, Projects and Learning Plans remove unsupported credentials/outcome claims and explain the learning process. Projects are explicitly illustrative. Course pages retain their numeric URLs and full topic content and add audience, readiness, activity, realistic goals, parent questions and consultation links.
+- Removed displayed tutor names from the public demo modal. A successful request is not labeled a confirmed appointment without an explicit confirmation contract. Private payment/subscription APIs are not changed.
+- Consultation form has accessible names, a synchronous duplicate-submit guard and success-only lead events; errors no longer log Axios request payloads. Existing GTM and Clarity IDs are preserved, with no extra installation. Runtime analytics parameter allowlist omits query strings, confirmation tokens, arbitrary payload fields and unknown utility paths. New `public_page_view` and `consultation_click` events are intent signals. `generate_lead` remains a backend-success signal, not a confirmed consultation.
+- Mobile menu has a name, expanded state, controlled region, Escape handling and bounded scroll. Keyboard focus reveals desktop More links; fixed mobile CTA has reserved page space. Skip link and reduced-motion rules added. Prerendered content stays visible instead of being hidden when an animation timer expires.
+- Existing route splitting retained; smaller responsive hero WebP files added, 17.3 KB mobile / 42.0 KB desktop versus the previous 161.4 KB JPEG; high-priority loading retained and below-fold consultation illustration lazy-loaded. The shared JS chunk is still substantial; further splitting is a measured follow-up, not a claim of optimal performance.
+- Deployment workflow is now manual (`workflow_dispatch`) so merging review work cannot publish automatically. Both workflows gate builds on TypeScript, lint, tests, HTML checks and real Apache integration checks.
+
+## Canonical/query policy
+
+Current public routes have no query-driven canonical content: catalog search is local component state. Tracking parameters such as utm_*, gclid and fbclid do not create indexable pages; canonical metadata points to the route. Redirects preserve the query string, including API/auth parameters; there is no global query-stripping redirect. Unknown parameters currently do not alter public content. If future filters, pagination or other parameters change content, define their canonical/indexing policy explicitly before launch; do not reuse the current route-only rule blindly. Utility confirmations are noindex and excluded from sitemap. Authentication must stay authenticated; robots is not a security control.
+
+## Tests and limitations
+
+Run from the repository (Windows: use npm.cmd):
 
 ```sh
 npm ci
+npm run check:types
+npm run lint
+npm test
 npm run build
 npm run check:seo
-npm test
+node scripts/serve-seo-test.mjs
+# Separate terminal, Chrome installed at the path in the script:
+npm run check:browser
 ```
 
-`npm run build` fetches the public course catalog, filters verified/published records, builds browser and server bundles, and renders static HTML into `dist`. It fails if the catalog cannot be refreshed, rather than silently deploying incomplete course pages. It strips unused fields, including author email addresses, from the embedded course data. No schedules, booking requests, or private account APIs are fetched during the build.
+- TypeScript passes. ESLint has zero errors and eight pre-existing React Fast Refresh warnings; six baseline lint errors were corrected.
+- All 12 unit/component tests pass and cover safe JSON-LD, dates, analytics and enquiry/download success/failure behavior using mocked backend responses. No real notifications are sent.
+- Generated HTML checks cover all 39 canonical pages: unique title/description/canonical, one H1 and robots directive, route-specific initial main content, valid JSON-LD, assets/links, catalog/sitemap agreement, prohibited embedded pricing/tutor fields, noindex errors and confirmations.
+- Chrome checks at 1365px and 390px cover home, regional/school hubs, catalog, Python and an article, plus modal opening, Escape close, mobile menu, client navigation, metadata and no-JavaScript rendering. External analytics is blocked during tests. No React hydration errors in the passing run, including unknown course/article URLs. The test waits for the mounted public route event rather than unrelated external image requests.
+- `scripts/test-apache.sh` and `scripts/check-apache-local.mjs` exercise all routes/alternate hosts/path variants, 404s and mutable catalog against actual Apache in isolated Ubuntu CI. **Not executed locally**: no Apache/WSL/Docker available. Passing static rules checks are not equivalent to passing this integration test.
+- `scripts/check-http.mjs` tests an actual deployed host. Run only after staging/production is ready: `SEO_TEST_ORIGIN=https://www.ritetutor.com npm run check:http` (PowerShell: set `$env:SEO_TEST_ORIGIN` first). It must pass before treating routing acceptance as complete.
+- Mobile lab method/results are in `output/seo/mobile-lab.json`. These are single throttled Chrome samples, not Lighthouse scores, field CWV or INP. Live and localhost differ in transport/compression, so differences are not a causal speed-improvement claim. Use PageSpeed Insights/CrUX and Search Console after deployment. Target p75 LCP <=2.5s, INP <=200ms, CLS <=0.1; no field success is claimed.
+- No authenticated user/admin/billing smoke test was possible without a safe staging account. Existing code was not migrated. External API payload remediation, vhost routing, real booking confirmation semantics and GTM configuration remain owner/backend tasks.
 
-**Rebuild and deploy when a course is added, edited, or unpublished.** Browser views refresh live course data, but the static HTML and sitemap remain the deployment snapshot. CI performs the SEO checks before deployment. `SEO_COURSES_FILE` can point to a controlled catalog fixture for local testing; do not use a stale fixture in production. `VITE_API_BASE_URL` remains supported.
+## Required owner/server work before deployment
 
-The browser uses lazy page imports; server builds use `src/route-pages.server.ts` so rendering never stops at a loading screen. Add future public routes to both route exports and `pageMetadata`, or to the appropriate dynamic route generator, and run the checks.
+1. Review the diff and run CI, including actual Apache integration. The existing EC2 SSH secrets are referenced by the workflow but were not accessed. Confirm backups and the exact marketing dist directory; never deploy with `--delete` against a parent containing backend/student files.
+2. Inspect `sudo apachectl -S`, active vhosts, Alias/ProxyPass rules and parent rewrites. Merge `deploy/apache-owner-integration.conf` into existing configuration. Set noindex X-Robots-Tag on auth/private utility responses. Update the separate auth app's initial HTML to remove the homepage canonical and add correct noindex; server headers alone do not repair its HTML canonical.
+3. Replace the historical port-80 302 with a permanent transport redirect. Generated public rules combine www and preferred path where reached; an earlier vhost redirect can add a hop. Configure public URL mapping before a blanket HTTP redirect if one-hop consolidation is desired. Do not redirect API/auth hosts without cookie/CORS/callback testing. Confirm TLS termination before using `%{HTTPS}`; if behind a proxy, use only a trusted server-configured scheme signal, never trust arbitrary X-Forwarded-Proto.
+4. Allow Apache FileInfo/Options/Indexes overrides in the frontend directory and load rewrite/headers; optional deflate enables compression. Preserve separate backend/auth routing. `sudo apachectl configtest` before `sudo systemctl reload apache2`.
+5. Backend owners must allowlist public course and availability API serializers. The old endpoint still exposes pricing/author information; client code cannot remove a field from an externally hosted public API. Remove those fields from public serializers while retaining authorized private billing serializers. Public schedule responses should expose slot IDs/times/availability, not individual tutor identity. Confirm booking response semantics before adding a `confirmed_booking` conversion.
+6. Use staging with access controls and staging-only noindex headers. Verify public direct visits and refreshes, www/non-www and HTTP variants, `/courses`, `/blogs`, all nine course URLs, `/pricing`, unknown routes, assets and API/auth flows. Confirm form behavior with mocked endpoints or an approved notification-suppressed staging backend. No fake production leads.
+7. Manually dispatch Deploy to EC2 only after approval. Workflow builds a fresh catalog and uploads dist. Keep a timestamped backup of the previous marketing dist and vhost config; retain recently referenced hashed assets during rollout if old open tabs must survive lazy imports. Deploy atomically where possible; current rsync replacement is not atomic and needs an agreed maintenance/release approach.
+8. After deployment run HTTP/browser checks on production, inspect initial and hydrated metadata, confirm robots/sitemap, check Apache error logs and verify API/auth/student/admin paths with authorized accounts. Confirm no staging noindex leaked to public responses. Roll back by restoring the prior marketing dist **and matching Apache config**, then configtest/reload and repeat checks. Rolling back HTML alone can leave incompatible redirects/catalog files.
 
-## Deployment checks on EC2 / Apache
+## Brand investigation and external actions
 
-The existing GitHub workflow deploys `dist`, including the generated `.htaccess`. The Apache virtual host must permit the directives used in that file (`Options -MultiViews`, `DirectoryIndex`, `ErrorDocument`, `mod_rewrite`, and optional `mod_headers`). Confirm the applicable `AllowOverride` permissions or place the equivalent rules in the virtual host. A parent catch-all SPA rewrite must not override these routes. Preserve existing backend/API and login routing.
+Live luddybuddy.com returned 200 with title `Rite Tutor | Online Tutoring, Coding, Math, AI & Academic Courses`, canonical `https://ritetutor.com/`, robots `index, follow`, and Rite Tutor text. No repository reference was found. This is evidence of shared/copied frontend HTML, **not proof of ownership**. Owner must establish domain ownership and whether it is a legacy copy or a distinct active service. If confirmed owned legacy: inventory its URLs, map matching content individually to canonical www URLs, use 301s, return 404/410 for unrelated removed content, and retain required application routes until migrated. Do not blanket redirect an unknown/distinct business.
 
-After deployment, check these responses with the production hostname:
+Instagram fetch could not verify `instagram.com/ritetutor`; no sameAs was added. Ask the owner to confirm official accounts and then align visible names and official website links. Do not add tutor biographies or invented trust signals. Exact-name consistency and duplicate consolidation can strengthen signals but cannot force Google's spelling interpretation or remove RightTutor from results. No penalty or ranking position was inferred from public search.
 
-| Request | Expected result |
-| --- | --- |
-| `/` | 200, homepage heading and copy in View Source |
-| `/online-tutoring-bloomington-indiana` | 200, local tutoring content in View Source |
-| `/courses/22` (while public) | 200, Python Quest content without waiting for the API |
-| `/blogs/choose-online-tutor-parent-checklist` | 200, full article and correct sharing image |
-| `/blog` | 301 to `/blogs` |
-| `/blog/choose-online-tutor-parent-checklist` | 301 to the `/blogs/` URL |
-| `/courses/22.html` | 301 to `/courses/22` |
-| `/this-page-does-not-exist` | **404**, not a homepage with status 200 |
-| `/sitemap.xml` | 200, XML containing only public canonical pages |
-| `/downloads/online-tutor-parent-scorecard.pdf` | 200, PDF |
-| `/thank-you/example` | Client confirmation page with noindex |
+## Search Console, analytics and 30/60/90-day review
 
-The local Vite preview is not Apache and does not execute `.htaccess`; production HTTP redirects and status codes must be verified on Apache. Confirm the existing HTTPS and preferred-host redirects at the virtual-host/load-balancer level. Keep backend requests working when configuring the non-www to www redirect. Both hostname variants currently accept browser requests to the course API; localhost is not an allowed API origin. The browser verification used a read-only local API proxy for that reason.
+- Verify a Search Console Domain property with owner-controlled DNS (owner action; no DNS changed here). Submit `https://www.ritetutor.com/sitemap.xml`. Inspect home, courses/blogs hubs and priority Geometry/Algebra/Python/Web URLs; compare rendered content, declared and Google-selected canonicals. Review Page Indexing, redirects, security/manual actions and HTTPS. Request indexing for important changed pages after successful live testing. Do not use Google's Indexing API for ordinary tutoring pages.
+- Existing GTM container: GTM-W8XZMKGJ. Configure one page-view mechanism: map `public_page_view` to GA4 page_view **or** retain existing history/enhanced measurement; never both. Suppress automatic full-URL/referrer collection on token/PII utility routes. Audit existing Clarity masking and consent configuration. No new consent policy or fabricated measurement ID was introduced.
+- Configure consultation_click as intent, generate_lead as backend-confirmed enquiry, contact_click separately, resource_download as resource interest. Do not classify any of these as staff-confirmed consultation. Confirm lead deduplication in GTM Preview and reconcile counts with backend enquiry records without transmitting contact/child details to analytics. No GTM/GA4 changes were published.
+- Day 30: verify crawling/indexing of changed canonical pages, eliminate loops/soft 404s and monitor genuine errors. Record brand variants separately: exact `Rite Tutor`, `RiteTutor`, `ritetutor.com`. Establish query/page/country/device and backend enquiry baselines; report missing data rather than zeros.
+- Day 60: compare equivalent 28-day periods for US non-brand course queries, Indiana queries, mobile engagement and qualified enquiries; use year-over-year school-season context where available. Inspect pages with impressions but weak CTR or irrelevant enquiry traffic. Choose one evidence-backed content improvement.
+- Day 90: compare equivalent 90-day and year-over-year windows. Review indexed pages, exact-brand impressions, relevant non-brand clicks and confirmed consultation rate. Refine priorities by business fit, not traffic alone. Expand only verified services with distinct parent needs.
 
-Check that the CDN/firewall permits intended search crawlers, CSS, JavaScript, images, and public pages. `robots.txt` by itself cannot override a server or firewall block. Run PageSpeed Insights after deployment for real device/network measurements; local asset reductions are not a measured Core Web Vitals score.
-
-## Google Search Console: existing account
-
-1. In the property's **Sitemaps** screen, submit `https://www.ritetutor.com/sitemap.xml`.
-2. Use URL Inspection / Test Live URL on the homepage, both new tutoring pages, one course, and one new blog. Check the rendered content and selected canonical, then request indexing for those priority pages.
-3. Review Page Indexing, HTTPS, Core Web Vitals, Manual Actions, and Security Issues. Correct reported problems; do not resubmit unchanged URLs repeatedly.
-4. Track impressions, clicks, click-through rate, and leads for four query groups: brand (`Rite Tutor`, `RiteTutor`); local (`online tutor Bloomington Indiana`, local math/coding searches); subject/course (`Python classes for kids`, algebra tutoring); and parent questions addressed by the articles.
-5. Compare results over meaningful periods after Google recrawls. Track qualified inquiries and enrollment outcomes alongside search traffic. Broader terms such as `rite` have multiple meanings and cannot be exclusively controlled by a tutoring website.
-
-The repository does not provide access to Search Console. This release prepares its inputs; it does not claim to submit the sitemap or request indexing inside the account.
-
-## Lead measurement in the existing GTM container
-
-Configure a GA4 event tag and custom-event triggers in the existing container. Keep the site's existing consent choices respected.
-
-| Data-layer event | When it fires | Parameters |
-| --- | --- | --- |
-| `generate_lead` | Successful strategy-call API response | `lead_type: strategy_call`, `page_path` |
-| `generate_lead` | Successful demo-booking API response | `lead_type: course_demo`, `course_id`, `page_path` |
-| `contact_click` | Phone or email link clicked | `contact_method`, `page_path` |
-| `resource_download` | Printable PDF link clicked | `resource`, `page_path` |
-
-Mark `generate_lead` as a GA4 key event after confirming it fires once per successful submission. A phone click or PDF click is an intent signal, not a confirmed lead. Test using GTM Preview with a controlled test submission; do not send student names, email addresses, phone numbers, form text, or full confirmation URLs as event parameters. These tags/triggers still require configuration in the GTM/GA4 account; code alone does not publish them.
-
-## Local, AI, and social search
-
-**Google Business Profile:** Rite Tutor was confirmed to be online-only. Google excludes online-only businesses from Business Profile eligibility. Do not create a fake Bloomington classroom, virtual-office listing, or service-area listing that implies in-person contact. The local landing page addresses Bloomington families honestly through organic search. [Google's eligibility rules](https://support.google.com/business/answer/13763036)
-
-**AI search:** Google's AI Overviews and AI Mode use the same SEO fundamentals: crawlable content, helpful answers, internal links, accurate markup, and an indexable page. There is no required AI text file or special schema that guarantees inclusion. The HTML, FAQs, course details, and parent guides improve the available source material; inclusion is still the search provider's decision. [Google's AI guidance](https://developers.google.com/search/docs/appearance/ai-features)
-
-**Bing and other discovery:** Verify the site in Bing Webmaster Tools and submit the same sitemap. Keep any real social profiles consistently named Rite Tutor and link them to the canonical website. Sharing previews now work without depending on JavaScript. Add social profile URLs to `sameAs` only after confirming the actual official accounts; no guessed handles were added.
-
-## Content that needs ongoing owner input
-
-- Add named tutor biographies, subject expertise, teaching experience, and original example lessons where those facts can be verified.
-- Expand science, English, or other subject pages only when you can provide real curriculum coverage, learning examples, tutor availability, and parent FAQs. Avoid many near-identical town or subject pages.
-- Verify existing testimonials, student stories, outcome statistics, and credential claims before treating them as evidence. The former aggregate-rating markup was removed because supporting review evidence was not available in the repository.
-- Supply approved privacy and terms pages. The previous footer linked to routes that do not exist; this release replaces those broken links with working resources rather than inventing policy text.
-- Publish useful follow-ups to the supplied articles, link related courses and resources, and update information when the service changes. Build genuine referrals, reviews, and relevant local/community mentions through actual relationships.
-
-SEO improves eligibility and relevance; it cannot promise first position for every query, platform, location, or date. [Google Search Essentials](https://developers.google.com/search/docs/essentials) and [site-name guidance](https://developers.google.com/search/docs/appearance/site-names) describe the parts a site owner can influence.
+Technical sources consulted: [Apache mod_dir](https://httpd.apache.org/docs/2.4/mod/mod_dir.html), [Apache rewrite flags](https://httpd.apache.org/docs/2.4/rewrite/flags.html), [React hydration](https://react.dev/reference/react-dom/client/hydrateRoot), [Google canonicalization](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [Google site names](https://developers.google.com/search/docs/appearance/site-names). [Google's eligibility rules](https://support.google.com/business/answer/13763036) exclude online-only businesses from Business Profiles; no walk-in address or profile is proposed.

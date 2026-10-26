@@ -12,7 +12,7 @@ const footerLinks = {
   ],
   company: [
     { name: 'About Us', href: '/about-us' },
-    { name: 'Pricing', href: '/pricing' },
+    { name: 'Learning Plans', href: '/learning-plans' },
     { name: 'Blog', href: '/blogs' },
     { name: 'Contact', href: '/contact' },
   ],
@@ -39,7 +39,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-background/70 mb-6 max-w-md">
-              One-to-one online tutoring across school subjects and grades, with math, coding, AI, and personalized learning for families in the US and worldwide.
+              Rite Tutor provides one-to-one online tutoring in school subjects, math, coding and AI. ritetutor.com is our official website, serving US and worldwide families.
             </p>
             <div className="space-y-3">
               <a 

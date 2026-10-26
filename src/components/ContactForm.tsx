@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { trackMarketingEvent } from "@/lib/analytics";
@@ -65,6 +65,7 @@ interface ContactFormProps {
 
 export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = true }: ContactFormProps) {
   const navigate = useNavigate();
+  const submitting = useRef(false);
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
@@ -164,6 +165,7 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting.current) return;
     setToast({ type: "", message: "" });
 
     if (formData.website) {
@@ -177,7 +179,7 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
         setToast({ type: "error", message: "Please wait a moment before submitting again." });
         return;
       }
-    } catch {}
+    } catch { /* Storage may be unavailable; server validation still applies. */ }
 
     const submitErrors = validate(formData);
     setErrors(submitErrors);
@@ -191,6 +193,7 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
     }
 
     try {
+      submitting.current = true;
       setLoading(true);
       const { website, country_code, phone, ...rest } = formData;
       const fullPhone = phone ? `+${country.dial}${phone}` : "";
@@ -207,24 +210,22 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
       }, { headers: { "Content-Type": "application/json" }, timeout: 20000 });
 
       trackMarketingEvent("generate_lead", { lead_type: "strategy_call" });
-      try { sessionStorage.setItem("rt_last_submit", String(Date.now())); } catch {}
+      try { sessionStorage.setItem("rt_last_submit", String(Date.now())); } catch { /* Storage may be unavailable; server validation still applies. */ }
       setFormData(INITIAL_FORM);
       setErrors({});
       setTouched({});
       onSuccess?.();
       if (redirectOnSuccess) navigate(`/thank-you/${generateToken()}`);
-    } catch (error: any) {
-      console.error(error);
-      const serverMsg =
-        error?.response?.data?.detail ||
-        error?.response?.data?.message ||
-        error?.response?.data?.error ||
-        "";
+    } catch (error: unknown) {
+      const body = axios.isAxiosError(error) ? error.response?.data : undefined;
+      const candidate = body?.detail || body?.message || body?.error;
+      const serverMsg = typeof candidate === 'string' && candidate.length < 200 ? candidate : '';
       setToast({
         type: "error",
         message: serverMsg || "Something went wrong while submitting. Please try again, or email hello@ritetutor.com.",
       });
     } finally {
+      submitting.current = false;
       setLoading(false);
     }
   };
@@ -269,13 +270,13 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
         />
 
         <div className="space-y-1">
-          <Input name="parent_name" value={formData.parent_name} onChange={handleChange} onBlur={handleBlur}
+          <Input name="parent_name" aria-label="Parent or guardian name" value={formData.parent_name} onChange={handleChange} onBlur={handleBlur}
             placeholder="Parent/Guardian Name *" className={`h-12 ${fieldError("parent_name") ? "border-destructive" : ""}`} required />
           {fieldError("parent_name") && <p className="text-xs text-destructive">{fieldError("parent_name")}</p>}
         </div>
 
         <div className="space-y-1">
-          <Input name="email" type="email" value={formData.email} onChange={handleChange} onBlur={handleBlur}
+          <Input name="email" aria-label="Parent or guardian email" type="email" value={formData.email} onChange={handleChange} onBlur={handleBlur}
             placeholder="Email Address *" className={`h-12 ${fieldError("email") ? "border-destructive" : ""}`} required />
           {fieldError("email") && <p className="text-xs text-destructive">{fieldError("email")}</p>}
         </div>
@@ -283,11 +284,10 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
         <div className="space-y-1">
           <div className={`flex gap-2 ${fieldError("phone") ? "" : ""}`}>
             <select
-              name="country_code"
+              name="country_code" aria-label="Country calling code"
               value={formData.country_code}
               onChange={handleChange}
               onBlur={handleBlur}
-              aria-label="Country code"
               className="h-12 px-2 rounded-md border border-border bg-background text-sm max-w-[42%] sm:max-w-[180px]"
             >
               {COUNTRIES.map((c) => (
@@ -297,7 +297,7 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
               ))}
             </select>
             <Input
-              name="phone"
+              name="phone" aria-label="Phone (optional)"
               value={formData.phone}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -313,7 +313,7 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1">
             <Input
-              name="child_age"
+              name="child_age" aria-label="Child’s age"
               value={formData.child_age}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -332,7 +332,7 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
             {fieldError("child_age") && <p className="text-xs text-destructive">{fieldError("child_age")}</p>}
           </div>
           <div className="space-y-1">
-            <select name="programming_experience" value={formData.programming_experience} onChange={handleChange} onBlur={handleBlur}
+            <select name="programming_experience" aria-label="Coding experience (optional)" value={formData.programming_experience} onChange={handleChange} onBlur={handleBlur}
               className={`w-full h-12 px-3 rounded-md border border-border bg-background text-sm ${fieldError("programming_experience") ? "border-destructive" : ""}`}>
               <option value="">Programming Experience</option>
               <option value="none">None</option>
@@ -344,17 +344,17 @@ export function ContactForm({ onSuccess, compact = false, redirectOnSuccess = tr
         </div>
 
         <div className="space-y-1">
-          <Input name="location" value={formData.location} onChange={handleChange} onBlur={handleBlur}
+          <Input name="location" aria-label="Location (optional)" value={formData.location} onChange={handleChange} onBlur={handleBlur}
             placeholder="Location/City (helps with timezone scheduling)" className="h-12" />
         </div>
 
         <div className="space-y-1">
-          <Textarea name="educational_objectives" value={formData.educational_objectives} onChange={handleChange} onBlur={handleBlur}
+          <Textarea name="educational_objectives" aria-label="Learning goals (optional)" value={formData.educational_objectives} onChange={handleChange} onBlur={handleBlur}
             placeholder="Educational Objectives: What are you hoping your child will achieve?" rows={compact ? 3 : 4} />
         </div>
 
         <div className="space-y-1">
-          <Input name="referral_source" value={formData.referral_source} onChange={handleChange} onBlur={handleBlur}
+          <Input name="referral_source" aria-label="How did you hear about us? (optional)" value={formData.referral_source} onChange={handleChange} onBlur={handleBlur}
             placeholder="How did you hear about Rite Tutor? (optional)" className="h-12" />
         </div>
 

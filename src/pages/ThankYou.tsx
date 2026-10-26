@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
+
 import { motion } from "framer-motion";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
@@ -31,10 +31,6 @@ const ThankYou = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Thank You | Rite Tutor</title>
-        <meta name="robots" content="noindex,nofollow" />
-      </Helmet>
 
       <Layout>
         <section className="min-h-[70vh] py-20 bg-card">

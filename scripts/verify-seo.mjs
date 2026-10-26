@@ -32,6 +32,7 @@ for (const url of urls) {
     assert.equal(doc.querySelector('meta[property="og:url"]').content, url);
     assert.equal(doc.querySelector('meta[property="og:title"]').content, doc.title);
     assert.equal(doc.querySelector('meta[name="twitter:title"]').content, doc.title);
+    assert.equal(doc.querySelectorAll('meta[name="robots"]').length, 1);
     assert(!doc.querySelector('meta[name="robots"]').content.includes('noindex'));
     assert.equal(doc.querySelectorAll('h1').length, 1, 'Exactly one main heading is required.');
     assert(doc.querySelector('main')?.textContent.trim().length > 300, 'Main content must exist without JavaScript.');
@@ -44,10 +45,11 @@ for (const url of urls) {
       assert(!script.textContent.includes('aggregateRating'), 'Do not publish unverified review ratings.');
     }
     const payload = JSON.parse(doc.getElementById('prerender-data').textContent);
+    assert(!JSON.stringify(payload).match(/\"(?:charges|author|teacher_fname|teacher_lname|price_per_class)\"/), 'No public prices or tutor data');
     assert((payload.courses || []).every(course => course.is_course_verified === true && course.show_on_website === true));
     for (const link of doc.querySelectorAll('a[href^="/"]')) {
       const href = link.getAttribute('href').split(/[?#]/)[0];
-      if (href.startsWith('//')) continue;
+      if (href.startsWith('//') || href === '') continue;
       if (href.includes('.')) await access(`dist${href}`);
       else assert(paths.has(href), `Broken internal link: ${href}`);
     }
@@ -67,6 +69,13 @@ assert((await readFile('dist/robots.txt', 'utf8')).includes(`${base}/sitemap.xml
 const routing = await readFile('dist/.htaccess', 'utf8');
 assert(routing.includes('ErrorDocument 404 /404.html'));
 assert(routing.includes('app-shell.html [END]'));
-assert(routing.includes('RewriteRule ^blog$ /blogs [R=301,L,NE]'));
+assert(routing.includes('https://www.ritetutor.com/blogs [R=301,L]'));
+assert(!paths.has('/pricing'));
+assert(paths.has('/learning-plans'));
+assert(routing.includes('RewriteRule ^courses$ courses.html [END]'));
+assert(routing.includes('RewriteRule ^blogs$ blogs.html [END]'));
+const catalog = JSON.parse(await readFile('dist/public-courses.json', 'utf8'));
+assert(!JSON.stringify(catalog).match(/\"(?:charges|author)\"/));
+assert.deepEqual(catalog.map(c => `/courses/${c.id}`).sort(), [...paths].filter(p => /^\/courses\/\d+$/.test(p)).sort());
 if (failures.length) throw new Error(`SEO checks failed:\n${failures.join('\n')}`);
 console.log(`Passed: ${urls.length} pages with unique metadata, indexable HTML, valid JSON-LD, working internal links/assets, sitemap, and noindex error/confirmation pages.`);

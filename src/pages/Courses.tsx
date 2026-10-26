@@ -176,12 +176,12 @@ const Courses = () => {
                   sm:text-5xl lg:text-6xl
                 "
               >
-                Discover Something
+                Online Math, Coding &
                 <span className="text-primary">
                   {" "}
-                  Amazing
+                  AI Courses
                 </span>{" "}
-                to Learn
+
               </h1>
 
               {/* Description */}

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-26",
+  "conditions": "Chrome headless; 390x844; CPU 4x; 1.6 Mbps download, 150 ms latency; cold cache; analytics blocked; one 18-second sample each; local server uncompressed; NOT field data or INP",
+  "results": [
+    {
+      "url": "https://www.ritetutor.com/",
+      "lcp": 2048,
+      "cls": 0.00009370577929516408,
+      "ready": "complete",
+      "resources": 22,
+      "domContentLoaded": 5655.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:4173/",
+      "lcp": 2276,
+      "cls": 0,
+      "ready": "complete",
+      "resources": 14,
+      "domContentLoaded": 5596.100000008941
+    }
+  ]
+}

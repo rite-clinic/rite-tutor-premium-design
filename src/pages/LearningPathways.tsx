@@ -43,7 +43,7 @@ const pathways = [
       "Use version control professionally for all projects",
       "Debug complex multi-file programs systematically",
       "Explain technical concepts to non-technical audiences",
-      "Maintain a growing portfolio of 10-20 documented projects"
+      "Maintain a record of projects and learning"
     ],
     duration: "Typically 12-18 months",
     color: "from-purple-500 to-pink-500"
@@ -53,17 +53,17 @@ const pathways = [
     title: "Pathway 3: Junior CTOs",
     subtitle: "Advanced",
     ages: "Typically ages 12-15 (skill-dependent)",
-    description: "The pinnacle of our pathway. Students don't just code—they architect solutions, manage development workflows, and earn professional credentials that carry real weight in college applications and early career opportunities.",
+    description: "Advanced learning can focus on deeper programming concepts, project planning, testing and explanation. Discuss prerequisites and suitable topics before selecting a pathway.",
     phases: [
-      { name: "University-Level Coursework", description: "Students work toward professional certifications and college credits through strategic integration with top-tier online education platforms. Our advanced students earn verified certificates from legendary university computer science courses." },
-      { name: "Professional Certifications", description: "Beyond university coursework, we prepare students for industry-recognized professional certifications in full-stack development, data science, AI fundamentals, cloud computing, and mobile development." },
+      { name: "University-Level Coursework", description: "Practical projects give students opportunities to explain their thinking, test ideas and reflect on what to improve. Discuss appropriate goals and a suitable starting point during a consultation." },
+      { name: "Explore advanced topics and project practice", description: "Advanced learning can focus on deeper programming concepts, project planning, testing and explanation. Discuss prerequisites and suitable topics before selecting a pathway." },
       { name: "Advanced Project Development", description: "Junior CTO students build sophisticated applications that get adopted by organizations, serve real users, demonstrate professional-level architecture, and include comprehensive testing and documentation." }
     ],
     outcomes: [
-      "Earned 1-3 university-level computer science credentials",
-      "Completed 2-5 professional certification programs",
-      "Built 30-50 documented projects in their portfolio",
-      "Developed presentation skills competitive for internships",
+      "Explore advanced topics and project practice",
+      "Explore advanced topics and project practice",
+      "Keep a record of projects and learning",
+      "Build and explain practical projects",
       "Created applications with measurable real-world impact"
     ],
     duration: "Typically 18-30 months",
@@ -74,7 +74,7 @@ const pathways = [
 const timelines = [
   { label: "Young Beginners (Ages 6-8, No Experience)", steps: ["6-12 months: Logic Explorers pathway", "12-24 months: Digital Builders pathway", "24-48 months: Junior CTO pathway (if desired)"] },
   { label: "Mid-Range Starters (Ages 9-11, Some Exposure)", steps: ["3-6 months: Accelerated Logic Explorers", "12-18 months: Digital Builders pathway", "18-36 months: Junior CTO pathway"] },
-  { label: "Advanced Beginners (Ages 12-15, Motivated & Ready)", steps: ["3-6 months: Foundations assessment & gap-filling", "6-12 months: Digital Builders pathway", "12-24 months: Junior CTO pathway with university credentials"] }
+  { label: "Advanced Beginners (Ages 12-15, Motivated & Ready)", steps: ["3-6 months: Foundations assessment & gap-filling", "6-12 months: Digital Builders pathway", "Explore advanced topics and project practice"] }
 ];
 
 const LearningPathways = () => {

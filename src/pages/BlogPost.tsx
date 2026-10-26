@@ -1,3 +1,4 @@
+import NotFound from './NotFound';
 import { motion } from "framer-motion";
 import { GatedDownload } from "@/components/GatedDownload";
 import { Link, useParams, Navigate } from "react-router-dom";
@@ -14,7 +15,7 @@ const BlogPost = () => {
   const post = slug ? getPostBySlug(slug) : null;
 
   if (!post) {
-    return <Navigate to="/blogs" replace />;
+    return <NotFound />;
   }
 
   const related = getRelatedPosts(post.slug, 3);
@@ -171,6 +172,7 @@ const BlogPost = () => {
               </div>
             </div>
           </section>
+          <section className="container-wide max-w-4xl py-10"><h2 className="text-2xl font-bold mb-4">Explore related online learning</h2><p><Link className="underline" to="/online-tutoring-all-subjects">School-subject tutoring</Link> · <Link className="underline" to="/courses">Math, coding and AI courses</Link> · <Link className="underline" to="/contact">Discuss your child’s needs</Link></p></section>
         </article>
       </Layout>
     </>

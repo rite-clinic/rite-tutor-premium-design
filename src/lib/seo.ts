@@ -1,4 +1,5 @@
-export const SITE_URL = "https://www.ritetutor.com";
+import brand from '@/data/brand.json';
+export const SITE_URL = brand.origin;
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
@@ -18,36 +19,35 @@ export const isoDate = (value: string) => {
 export const organizationSchema = {
   "@type": "EducationalOrganization",
   "@id": ORGANIZATION_ID,
-  name: "Rite Tutor",
-  alternateName: "RiteTutor",
+  name: brand.name,
   url: `${SITE_URL}/`,
-  logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
-  image: `${SITE_URL}/og-image.png`,
+  logo: { "@type": "ImageObject", url: absoluteUrl(brand.logo) },
+  image: absoluteUrl(brand.sharingImage),
   description: "One-to-one online tutoring across school subjects and grades, with coding, AI, math, and personalized learning for families in the United States and worldwide.",
-  telephone: "+1-929-421-8055",
-  email: "hello@ritetutor.com",
+  telephone: brand.telephone,
+  email: brand.email,
   areaServed: [
     { "@type": "City", name: "Bloomington, Indiana" },
     { "@type": "AdministrativeArea", name: "Indiana" },
     { "@type": "Country", name: "United States" },
     { "@type": "Place", name: "Worldwide" },
   ],
-  contactPoint: { "@type": "ContactPoint", contactType: "enrollment", telephone: "+1-929-421-8055", email: "hello@ritetutor.com" },
+  contactPoint: { "@type": "ContactPoint", contactType: "enrollment", telephone: brand.telephone, email: brand.email },
 };
 
 export const websiteSchema = {
-  "@type": "WebSite", "@id": WEBSITE_ID, name: "Rite Tutor", alternateName: "RiteTutor",
+  "@type": "WebSite", "@id": WEBSITE_ID, name: brand.name,
   url: `${SITE_URL}/`, publisher: { "@id": ORGANIZATION_ID }, inLanguage: "en",
 };
 
 export const pageMetadata: Record<string, { title: string; description: string; label: string }> = {
-  "/": { title: "Rite Tutor | Online Tutoring for Kids, Coding & All Subjects", description: "One-to-one online tutoring across school subjects and grades, plus coding and AI. Serving Bloomington, Indiana, US and worldwide families. Book a free call.", label: "Home" },
+  "/": { title: "Rite Tutor | Online Math, Coding & School Tutoring", description: "One-to-one online tutoring across school subjects and grades, plus coding and AI. Serving Bloomington, Indiana, US and worldwide families. Book a free call.", label: "Home" },
   "/about-us": { title: "About Rite Tutor | Personalized Online Learning for Kids", description: "Learn how Rite Tutor approaches one-to-one mentorship, skill-based learning, coding, and academic support for children and families worldwide.", label: "About Us" },
   "/how-it-works": { title: "How Online Tutoring Works | Free Strategy Call | Rite Tutor", description: "Start with a free strategy call, discuss your child's learning needs, and plan one-to-one online lessons with Rite Tutor. See the steps and what to expect.", label: "How It Works" },
   "/learning-pathways": { title: "Kids' Coding Learning Pathways | Beginner to AI | Rite Tutor", description: "Explore skill-based coding pathways from logic foundations to Python, web development, and advanced projects. Find your child's next step with Rite Tutor.", label: "Learning Pathways" },
   "/courses": { title: "Online Classes for Kids | Math, Python, Coding & AI | Rite Tutor", description: "Browse Rite Tutor's live course catalog: Python, AI, web development, algebra, geometry, precalculus, and logic. Ask about tutoring for any school subject.", label: "Courses" },
-  "/projects": { title: "Student Coding Projects & Learning Outcomes | Rite Tutor", description: "Explore student project examples and Rite Tutor's approach to helping children build, explain, and improve real coding projects through online mentorship.", label: "Student Projects" },
-  "/pricing": { title: "Online Tutoring Pricing & Lesson Options | Rite Tutor", description: "Explore lesson frequency and mentorship options at Rite Tutor. Discuss your child's subject, grade, goals, and a personalized tutoring quote on a free call.", label: "Pricing" },
+  "/projects": { title: "Coding Project Ideas & Learning Activities | Rite Tutor", description: "Explore illustrative Python, web development and React activities with Rite Tutor. See how explaining, testing and reviewing code can support learning.", label: "Student Projects" },
+  "/learning-plans": { title: "Online Tutoring Learning Plans | Rite Tutor", description: "Plan one-to-one online school tutoring or coding enrichment around your child’s starting point, curriculum, and goals. Request a free consultation.", label: "Learning Plans" },
   "/services": { title: "Online Tutoring Services | All Subjects, Math & Coding | Rite Tutor", description: "One-to-one online tutoring across school subjects and grades, alongside coding, math, and AI. Find support for your child's goals with Rite Tutor.", label: "Services" },
   "/contact": { title: "Contact Rite Tutor | Book a Free Online Tutoring Consultation", description: "Talk with Rite Tutor about your child's subject, grade, and learning goals. Book a free strategy call for online tutoring in Indiana, the US, or worldwide.", label: "Contact" },
   "/blogs": { title: "Parent Guides to Tutoring, Math, Coding & AI | Rite Tutor Blog", description: "Practical parent guides to online tutoring, math understanding, coding readiness, and AI, with free printable checklists from Rite Tutor.", label: "Blog" },

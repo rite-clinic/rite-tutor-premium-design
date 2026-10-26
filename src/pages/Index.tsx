@@ -39,7 +39,7 @@ const Index = () => {
         <GlobalReachSection />
         <TechStackSection />
         <RealResultsSection />
-        <TestimonialsSection />
+        {/* Testimonials withheld until their source and permission are verified. */}
         <InvestmentSection />
         <StrategyCallSection />
         <CTASection />

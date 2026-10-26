@@ -27,6 +27,7 @@ export function ContactModalProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
 
   const openContactModal = useCallback(() => {
+    trackMarketingEvent("consultation_click");
     setFile(null);
     setReady(false);
     setOpen(true);
@@ -61,13 +62,13 @@ export function ContactModalProvider({ children }: { children: ReactNode }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-lg w-[95vw] max-h-[92vh] overflow-y-auto p-6 sm:p-8">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-display">{ready ? "Thank you! Your file is ready" : "Book Your Free Strategy Call"}</DialogTitle>
+            <DialogTitle className="text-2xl font-display">{ready ? "Thank you! Your file is ready" : "Request Your Free Consultation"}</DialogTitle>
             <DialogDescription>
               {ready
                 ? "Your request has been submitted. Our team will contact you to arrange your free strategy call."
                 : file
-                  ? "Fill out the form below to book your free strategy call. Your file will download or open after successful submission."
-                  : "A 30-minute, no-pressure conversation to map your child's personalized learning pathway."}
+                  ? "Fill out the form below to request a free consultation. Your file will download or open after successful submission."
+                  : "Send an enquiry and our team will contact you to arrange a conversation. This does not confirm an appointment."}
             </DialogDescription>
           </DialogHeader>
           <div className="mt-4">
