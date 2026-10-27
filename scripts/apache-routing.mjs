@@ -5,6 +5,8 @@ export function apacheRouting(routes, origin) {
   return `# Generated. Apache 2.4; AllowOverride FileInfo Indexes Options=Indexes,MultiViews required.
 Options -MultiViews -Indexes
 DirectoryIndex index.html
+# Public canonical routes omit trailing slashes; keep mod_dir from adding them.
+DirectorySlash Off
 ErrorDocument 404 /404.html
 RewriteEngine On
 # Apply page mappings before mod_dir redirects physical courses/blogs directories.
