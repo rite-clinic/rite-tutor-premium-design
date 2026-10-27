@@ -7,6 +7,8 @@ Options -MultiViews -Indexes
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 RewriteEngine On
+# Apply page mappings before mod_dir redirects physical courses/blogs directories.
+RewriteOptions AllowNoSlash
 # Preserve existing application and API handlers; do not normalize their URLs.
 RewriteRule ^(?:backend|api|sign-in|sign-up|register|login|dashboard|student|admin)(?:/|$) - [L]
 ${aliases.map(([from, to]) => `RewriteRule ^${escape(from.slice(1))}/?$ ${origin}${to} [R=301,L]`).join('\n')}
