@@ -2,7 +2,7 @@
 export function apacheRouting(routes, origin) {
   const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const aliases = [['/pricing', '/learning-plans'], ['/blog', '/blogs'], ...routes.filter(p => p.startsWith('/blogs/')).map(p => [p.replace('/blogs/', '/blog/'), p])];
-  return `# Generated. Apache 2.4; AllowOverride FileInfo Options Indexes required.
+  return `# Generated. Apache 2.4; AllowOverride FileInfo Indexes Options=Indexes,MultiViews required.
 Options -MultiViews -Indexes
 DirectoryIndex index.html
 ErrorDocument 404 /404.html

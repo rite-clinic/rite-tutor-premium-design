@@ -37,7 +37,7 @@ SSLCertificateFile "$apache_root/cert.pem"
 SSLCertificateKeyFile "$apache_root/key.pem"
 <Directory "$apache_root/dist">
   Require all granted
-  AllowOverride FileInfo Options Indexes
+  AllowOverride FileInfo Indexes Options=Indexes,MultiViews
 </Directory>
 EOF
 sudo a2enmod rewrite headers ssl mime dir authz_core >/dev/null
