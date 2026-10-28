@@ -2,11 +2,15 @@
 export function apacheRouting(routes, origin) {
   const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const aliases = [['/pricing', '/learning-plans'], ['/blog', '/blogs'], ...routes.filter(p => p.startsWith('/blogs/')).map(p => [p.replace('/blogs/', '/blog/'), p])];
-  return `# Generated. Apache 2.4; AllowOverride FileInfo Options Indexes required.
+  return `# Generated. Apache 2.4; AllowOverride FileInfo Indexes Options=Indexes,MultiViews required.
 Options -MultiViews -Indexes
 DirectoryIndex index.html
+# Public canonical routes omit trailing slashes; keep mod_dir from adding them.
+DirectorySlash Off
 ErrorDocument 404 /404.html
 RewriteEngine On
+# Apply page mappings before mod_dir redirects physical courses/blogs directories.
+RewriteOptions AllowNoSlash
 # Preserve existing application and API handlers; do not normalize their URLs.
 RewriteRule ^(?:backend|api|sign-in|sign-up|register|login|dashboard|student|admin)(?:/|$) - [L]
 ${aliases.map(([from, to]) => `RewriteRule ^${escape(from.slice(1))}/?$ ${origin}${to} [R=301,L]`).join('\n')}
